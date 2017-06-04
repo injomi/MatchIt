@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
+import com.example.matchit.activity.LoginActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     private ProgressBar mProgress;
@@ -42,7 +44,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void startApp() {
-        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
         startActivity(intent);
     }
 
