@@ -3,11 +3,54 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/eventTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="35dp"
+        android:textColor="@color/input_login"
+        android:text="Events Joined"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/eventTitle"
+        android:background="@color/input_login"
+        android:id="@+id/view" />
+
+    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="242dp"
-        android:text="Events" />
+        android:text="See the current events you joined!"
+        android:layout_below="@+id/view"
+        android:layout_alignParentStart="true" />
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true">
+
+        <TableRow
+            android:id="@+id/eventTable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/textView2"
+            android:weightSum="2"
+            android:layout_margin="2dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:padding="3dip"
+                android:text="Event" />
+
+            <TextView
+                android:layout_weight="1"
+                android:padding="3dip"
+                android:text="Date" />
+        </TableRow>
+    </TableLayout>
 </RelativeLayout>

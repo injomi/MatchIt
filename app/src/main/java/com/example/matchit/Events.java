@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 /**
  * Created by josephtyx on 4/6/17.
@@ -14,6 +16,8 @@ import android.view.ViewGroup;
 public class Events extends Fragment {
 
     View myView;
+    TableRow eTable;
+    TableLayout eLayout;
 
     @Nullable
     @Override
