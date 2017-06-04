@@ -1,8 +1,10 @@
 package com.example.matchit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.matchit.activity.LoginActivity;
 
 public class Home_screen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,14 +27,15 @@ public class Home_screen extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //This is the message button at the bottom right corner
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,7 +64,7 @@ public class Home_screen extends AppCompatActivity
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -72,26 +77,45 @@ public class Home_screen extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        android.app.FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_events) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new Events())
+                    .commit();
+        } else if (id == R.id.nav_statistics) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new Statistics())
+                    .commit();
+        } else if (id == R.id.nav_groups) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new Groups())
+                    .commit();
+        } else if (id == R.id.nav_availability) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new Availability())
+                    .commit();
+        } else if (id == R.id.nav_setting) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new Setting())
+                    .commit();
+        } else if (id == R.id.nav_logout) {
+            Intent intent = new Intent(Home_screen.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
