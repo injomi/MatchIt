@@ -18,7 +18,7 @@ import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.matchit.MainActivity;
+import com.example.matchit.HomeScreen;
 import com.example.matchit.R;
 import com.example.matchit.RegisterActivity;
 import com.example.matchit.app.AppConfig;
@@ -65,7 +65,7 @@ public class LoginActivity extends Activity {
         // Check if user is already logged in or not
         if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, HomeScreen.class);
             startActivity(intent);
             finish();
         }
@@ -146,7 +146,7 @@ public class LoginActivity extends Activity {
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
-                                MainActivity.class);
+                                HomeScreen.class);
                         startActivity(intent);
                         finish();
                     } else {

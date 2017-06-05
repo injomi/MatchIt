@@ -38,13 +38,12 @@ public class SplashScreen extends AppCompatActivity {
                 mProgress.setProgress(progress);
             } catch (Exception e) {
                 e.printStackTrace();
-                //Timber.e(e.getMessage());
             }
         }
     }
 
     private void startApp() {
-        Intent intent = new Intent(SplashScreen.this, Home_screen.class);
+        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
         startActivity(intent);
     }
 
