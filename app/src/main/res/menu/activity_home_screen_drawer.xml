@@ -3,29 +3,29 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+        <item
             android:id="@+id/nav_events"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_wc_black_24dp"
             android:title="Events" />
         <item
             android:id="@+id/nav_statistics"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_account_box_black_24dp"
             android:title="Statistics" />
         <item
-            android:id="@+id/nav_groups"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Groups" />
-        <item
             android:id="@+id/nav_availability"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_alarm_on_black_24dp"
             android:title="Availability" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Setting" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Account">
         <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Setting" />
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_menu_send"

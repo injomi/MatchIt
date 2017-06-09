@@ -24,6 +24,7 @@ public class HomeScreen extends AppCompatActivity
     private TextView txtName;
     private TextView txtEmail;
 
+
     private SQLiteHandler db;
     private SessionManager session;
 
@@ -128,7 +129,6 @@ public class HomeScreen extends AppCompatActivity
         android.app.FragmentManager fragmentManager = getFragmentManager();
 
         if (id == R.id.nav_events) {
-            // Handle the camera action
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                             , new Events())
@@ -138,10 +138,10 @@ public class HomeScreen extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new Statistics())
                     .commit();
-        } else if (id == R.id.nav_groups) {
+        } else if (id == R.id.nav_home) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new Groups())
+                            , new Home())
                     .commit();
         } else if (id == R.id.nav_availability) {
             fragmentManager.beginTransaction()
