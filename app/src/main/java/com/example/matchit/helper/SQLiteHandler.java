@@ -38,6 +38,16 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_ORG_NAME = "org_name";
     private static final String KEY_UEN = "uen";
     private static final String KEY_CONTACT = "liason_contact";
+    private static final String KEY_ADDRESS = "address";
+    private static final String KEY_POSTALCODE = "postalcode";
+    private static final String KEY_GENDER = "gender";
+    private static final String KEY_CONTACTNUMBER = "contactnumber";
+    private static final String KEY_NATIONALITY = "nationality";
+    private static final String KEY_RACE = "race";
+    private static final String KEY_SPECIALIZATION = "specialization";
+    private static final String KEY_OCCUPATION = "occupation";
+    private static final String KEY_LANGSPOKEN = "languagespoken";
+    private static final String KEY_LANGWRITTEN = "languagewritten";
 
     public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -68,7 +78,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String name, String email, String uid, String created_at, String nric, String org_name, String uen, String liason_contact) {
+    public void addUser(String name, String email, String uid, String created_at, String nric, String org_name, String uen, String liason_contact, String address, String postalcode, String gender, String contactnumber, String nationality, String race, String specialization, String occupation, String languagespoken, String languagewritten) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -80,6 +90,17 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put(KEY_ORG_NAME, org_name); //Org name
         values.put(KEY_UEN, uen); //UEN
         values.put(KEY_CONTACT, liason_contact); //Contact Number
+        values.put(KEY_ADDRESS, address);
+        values.put(KEY_POSTALCODE, postalcode); // Created At
+        values.put(KEY_GENDER, gender); //NRIC
+        values.put(KEY_CONTACTNUMBER, contactnumber); //Org name
+        values.put(KEY_NATIONALITY, nationality); //UEN
+        values.put(KEY_RACE, race); //Contact Number
+        values.put(KEY_SPECIALIZATION, specialization); //Contact Number
+        values.put(KEY_OCCUPATION, occupation);
+        values.put(KEY_LANGSPOKEN, languagespoken); // Created At
+        values.put(KEY_LANGWRITTEN, languagewritten); //NRIC
+
 
         // Inserting Row
         long id = db.insert(TABLE_USER, null, values);
@@ -108,6 +129,16 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             user.put("org_name", cursor.getString(6));
             user.put("uen", cursor.getString(7));
             user.put("liason_contact", cursor.getString(8));
+            user.put("address", cursor.getString(9));
+            user.put("postalcode", cursor.getString(10));
+            user.put("gender", cursor.getString(11));
+            user.put("contactnumber", cursor.getString(12));
+            user.put("nationality", cursor.getString(13));
+            user.put("race", cursor.getString(14));
+            user.put("specialization", cursor.getString(15));
+            user.put("occupation", cursor.getString(16));
+            user.put("languagespoken", cursor.getString(17));
+            user.put("languagewritten", cursor.getString(18));
         }
         cursor.close();
         db.close();

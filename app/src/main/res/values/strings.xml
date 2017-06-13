@@ -22,6 +22,12 @@
     <string name="languagespoken">Language Spoken And Written</string>
     <string name="title_activity_home_screen">MatchIt!</string>
 
+    //Card View
+    <string name="card_view_cat">Category : </string>
+    <string name="card_view_timing">Timing : </string>
+    <string name="btn_view_more">VIEW more</string>
+    <string name="card_view_event_name">Event Name</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

@@ -91,9 +91,20 @@ public class RegisterActivityCop extends Activity {
                 String org_name = inputOrgName.getText().toString().trim();
                 String uen = inputUen.getText().toString().trim();
                 String liason_contact = inputContact.getText().toString().trim();
+                String address = "";
+                String postalcode = "";
+                String gender = "";
+                String contactnumber = "";
+                String nationality = "";
+                String race = "";
+                String specialization = "";
+                String occupation = "";
+                String languagespoken = "";
+                String languagewritten = "";
+
 
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !nric.isEmpty() && !org_name.isEmpty() && !uen.isEmpty() && !liason_contact.isEmpty()) {
-                    registerUser(name, email, password, nric, org_name, uen, liason_contact);
+                    registerUser(name, email, password, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, languagespoken, languagewritten);
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
@@ -120,7 +131,7 @@ public class RegisterActivityCop extends Activity {
      * email, password) to register url
      * */
     private void registerUser(final String name, final String email,
-                              final String password, final String nric, final String org_name, final String uen, final String liason_contact) {
+                              final String password, final String nric, final String org_name, final String uen, final String liason_contact, final String address, final String postalcode, final String gender, final String contactnumber, final String nationality, final String race, final String specialization, final String occupation, final String languagespoken, final String languagewritten) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
 
@@ -151,9 +162,21 @@ public class RegisterActivityCop extends Activity {
                         String org_name = user.getString("org_name");
                         String uen = user.getString("uen");
                         String liason_contact = user.getString("liason_contact");
+                        String address = "";
+                        String postalcode = "";
+                        String gender = "";
+                        String contactnumber = "";
+                        String nationality = "";
+                        String race = "";
+                        String specialization = "";
+                        String occupation = "";
+                        String languagespoken = "";
+                        String languagewritten = "";
+
+
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at, nric, org_name, uen, liason_contact);
+                        db.addUser(name, email, uid, created_at, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, languagespoken, languagewritten);
 
                         Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 

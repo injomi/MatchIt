@@ -46,6 +46,7 @@ public class RegisterActivity2 extends Activity {
     private SessionManager session;
     private SQLiteHandler db;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,7 @@ public class RegisterActivity2 extends Activity {
         tamilWritten = (CheckBox) findViewById(R.id.checkBoxTamilWritten);
         othersSpoken = (CheckBox) findViewById(R.id.checkBoxOthers);
         othersWritten = (CheckBox) findViewById(R.id.checkBoxOthersWritten);
+
 
         //Buttons
         btnRegister = (Button) findViewById(R.id.btnRegister);
@@ -107,11 +109,13 @@ public class RegisterActivity2 extends Activity {
                 String race = inputRace.getSelectedItem().toString();
                 String specialization = inputSpecializedArea.getText().toString().trim();
                 String occupation = inputOccupation.getText().toString().trim();
+                String org_name = "";
+                String uen = "";
+                String liason_contact = "";
+                String languagespoken = "";
+                String languagewritten = "";
 
-
-
-
-                //registerUser(name, email, password, nric, org_name, uen, liason_contact);
+                registerUser(name, email, password, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, languagespoken, languagewritten);
 
             }
         });
@@ -134,7 +138,7 @@ public class RegisterActivity2 extends Activity {
      * email, password) to register url
      * */
     private void registerUser(final String name, final String email,
-                              final String password, final String nric, final String org_name, final String uen, final String liason_contact) {
+                              final String password, final String nric, final String org_name, final String uen, final String liason_contact, final String address, final String postalcode, final String gender, final String contactnumber, final String nationality, final String race, final String specialization, final String occupation, final String languagespoken, final String languagewritten) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
 
@@ -165,9 +169,19 @@ public class RegisterActivity2 extends Activity {
                         String org_name = user.getString("org_name");
                         String uen = user.getString("uen");
                         String liason_contact = user.getString("liason_contact");
+                        String address = user.getString("address");
+                        String postalcode = user.getString("postalcode");
+                        String gender = user.getString("gender");
+                        String contactnumber = user.getString("contactnumber");
+                        String nationality = user.getString("nationality");
+                        String race = user.getString("race");
+                        String specialization = user.getString("specialization");
+                        String occupation = user.getString("occupation");
+                        String languagespoken = user.getString("languagespoken");
+                        String languagewritten = user.getString("languagewritten");
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at, nric, org_name, uen, liason_contact);
+                        db.addUser(name, email, uid, created_at, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, languagespoken, languagewritten);
 
                         Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
@@ -212,6 +226,16 @@ public class RegisterActivity2 extends Activity {
                 params.put("org_name", org_name);
                 params.put("uen", uen);
                 params.put("liason_contact", liason_contact);
+                params.put("address", address);
+                params.put("postalcode", postalcode);
+                params.put("gender", gender);
+                params.put("contactnumber", contactnumber);
+                params.put("nationality", nationality);
+                params.put("race", race);
+                params.put("specialization", specialization);
+                params.put("occupation", occupation);
+                params.put("languagespoken", languagespoken);
+                params.put("languagewritten", languagewritten);
 
                 return params;
             }

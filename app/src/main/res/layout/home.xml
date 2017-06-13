@@ -1,42 +1,93 @@
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/card_view"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="380dp"
-    android:layout_margin="8dp">
+    android:layout_height="wrap_content"
+    android:id="@+id/cv"
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="160dp">
+
+        <TextView
+            android:text="@string/card_view_cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/category_name"
+            android:layout_below="@+id/event_name"
+            android:layout_alignLeft="@+id/event_name"
+            android:layout_alignStart="@+id/event_name"
+            android:layout_alignRight="@+id/event_name"
+            android:layout_alignEnd="@+id/event_name" />
+
+        <TextView
+            android:text="@string/card_view_timing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text"
+            android:layout_below="@+id/category_name"
+            android:layout_alignLeft="@+id/category_name"
+            android:layout_alignStart="@+id/category_name" />
+
+        <TextView
+            android:text="FILL IN TIME"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/estimated_time"
+            android:layout_alignBaseline="@+id/text"
+            android:layout_alignBottom="@+id/text"
+            android:layout_toRightOf="@+id/text" />
 
         <ImageView
-            android:id="@+id/thumbnail"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:id="@+id/image"
             android:layout_alignParentTop="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_account_box_black_24dp" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
+
+        <Button
+            android:text="@string/btn_view_more"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:id="@+id/btn_view"
+            android:background="@null"
+            android:textAlignment="viewStart"
+            android:gravity="start"
+            android:layout_marginBottom="21dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/text"
+            android:layout_alignStart="@+id/text" />
 
         <TextView
-            android:id="@+id/title"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/thumbnail"
-            android:maxLines="3"
-            android:padding="8dp"
-            android:text="EVENT NAME"
-            android:textColor="#222"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/btn_view"
+            android:layout_alignStart="@+id/btn_view"
+            android:id="@+id/textView3"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:text="@string/card_view_event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="22dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:maxLines="3"
-            android:padding="8dp"
-            android:text="LOCATION"
-            android:textColor="#666"
-            android:textSize="14dp" />
-
+            android:id="@+id/event_name"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/image"
+            android:layout_toEndOf="@+id/image" />
     </RelativeLayout>
+
 </android.support.v7.widget.CardView>
