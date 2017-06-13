@@ -18,13 +18,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
 /**
  * Created by josephtyx on 4/6/17.
  */
 
-public class    Events extends Fragment {
+public class Events extends Fragment {
 
     View myView;
     TableRow eTable;

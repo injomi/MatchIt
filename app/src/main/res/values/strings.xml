@@ -21,7 +21,7 @@
     <string name="name">Full Name</string>
     <string name="languagespoken">Language Spoken And Written</string>
     <string name="title_activity_home_screen">MatchIt!</string>
-
+    <string name="search_hint">Search</string>
     //Card View
     <string name="card_view_cat">Category : </string>
     <string name="card_view_timing">Timing : </string>
