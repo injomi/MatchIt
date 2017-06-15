@@ -23,7 +23,7 @@
     <string name="title_activity_home_screen">MatchIt!</string>
     <string name="search_hint">Search</string>
     //Card View
-    <string name="card_view_cat">Category : </string>
+    <string name="card_view_par">Participants : </string>
     <string name="card_view_timing">Timing : </string>
     <string name="btn_view_more">VIEW more</string>
     <string name="card_view_event_name">Event Name</string>
