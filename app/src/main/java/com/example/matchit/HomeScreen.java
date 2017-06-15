@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -63,19 +64,34 @@ public class HomeScreen extends AppCompatActivity
         // session manager
         session = new SessionManager(getApplicationContext());
 
+
         if (!session.isLoggedIn()) {
             logoutUser();
         }
 
         // Fetching user details from sqlite
+
         HashMap<String, String> user = db.getUserDetails();
+
 
         String name = user.get("name");
         String email = user.get("email");
 
+
         // Displaying the user details on the screen
         txtName.setText(name);
         txtEmail.setText(email);
+
+        if (getIntent().getExtras() != null) {
+            for (String key : getIntent().getExtras().keySet()) {
+                String value = getIntent().getExtras().getString(key);
+                Log.d("Test", "Key: " + key + " Value: " + value);
+            }
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame
+                            , new Home())
+                    .commit();
+        }
     }
 
     private void logoutUser() {

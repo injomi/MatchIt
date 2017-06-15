@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    >
         <EditText
             android:id="@+id/search_box"
             android:layout_width="match_parent"
@@ -19,5 +18,29 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical"
+            android:layout_below="@id/search_box">
+            <Button
+                android:id="@+id/subTopic1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sub1" />
+            <Button
+                android:id="@+id/unsubTopic1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="unsub1" />
+            <Button
+                android:id="@+id/subTopic2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sub2"/>
+            <Button
+                android:id="@+id/unsubTopic2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="unsub2"/>
+        </LinearLayout>
 </RelativeLayout>
 
