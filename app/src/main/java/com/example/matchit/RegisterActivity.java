@@ -6,7 +6,6 @@ package com.example.matchit;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -83,6 +82,8 @@ public class RegisterActivity extends Activity {
             Log.i("Test", "btnNextPage is not null");
         btnNextPage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+
+                //Get gender value
                 if (inputMale.isChecked()){
                     radioValue = "Male";
                 }
@@ -90,12 +91,49 @@ public class RegisterActivity extends Activity {
                 {
                     radioValue = "Female";
                 }
-
+                //Validate form
                 if (!inputFullName.getText().toString().isEmpty() && !inputNric.getText().toString().isEmpty() && !inputAddress.getText().toString().isEmpty() && !inputPostalCode.getText().toString().isEmpty() && !inputContact.getText().toString().isEmpty() && !inputEmail.getText().toString().isEmpty() && !inputPassword.getText().toString().isEmpty()) {
+                    //Validate nric
+                    String nric = inputNric.getText().toString().trim();
+                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}"))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "NRIC not in the right format", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+                    //Validate email
+                    String email = inputEmail.getText().toString().trim();
+                    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                    if (!email.matches(emailPattern))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Email not in the right format", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
                 } else {
+                    //Validate nric
+                    String nric = inputNric.getText().toString().trim();
+                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}"))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "NRIC not in the right format", Toast.LENGTH_LONG)
+                                .show();
+                    }
+                    //Validate email
+                    String email = inputEmail.getText().toString().trim();
+                    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                    if (!email.matches(emailPattern))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Email not in the right format", Toast.LENGTH_LONG)
+                                .show();
+                    }
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
                             .show();
+
                     return;
                 }
                 Intent i = new Intent(getApplicationContext(),
