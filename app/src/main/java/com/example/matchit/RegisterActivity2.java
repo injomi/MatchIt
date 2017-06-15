@@ -95,15 +95,17 @@ public class RegisterActivity2 extends Activity {
         // Register Button Click event
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-                String name = prefs.getString("fullname", null);
-                String nric = prefs.getString("nric", null);
-                String address = prefs.getString("address", null);
-                String postalcode = prefs.getString("postalcode", null);
-                String gender = prefs.getString("gender", null);
-                String contactnumber = prefs.getString("contactnumber", null);
-                String email = prefs.getString("email", null);
-                String password = prefs.getString("password", null);
+                Intent i = RegisterActivity2.this.getIntent();
+                String name = i.getStringExtra("fullname");
+                String nric = i.getStringExtra("nric");
+                String address = i.getStringExtra("address");
+                String postalcode = i.getStringExtra("postalcode");
+                String gender = i.getStringExtra("gender");
+                String contactnumber = i.getStringExtra("contactnumber");
+                String email = i.getStringExtra("email");
+                String password = i.getStringExtra("password");
+
+                Log.i("Test", "Name -> " + name + ", nric -> " +nric + ", address -> " + address+ ", postalcode -> " + postalcode + ", gender -> " + gender + ", contactnumber -> " + contactnumber + ", email -> " + email + ", pw -> " + password);
 
                 String nationality = inputNationality.getText().toString().trim();
                 String race = inputRace.getSelectedItem().toString();
@@ -149,7 +151,7 @@ public class RegisterActivity2 extends Activity {
                 AppConfig.URL_REGISTER, new Response.Listener<String>() {
 
             @Override
-            public void onResponse(String response) {
+            public void onResponse(String response) { //response
                 Log.d(TAG, "Register Response: " + response.toString());
                 hideDialog();
 
@@ -159,29 +161,10 @@ public class RegisterActivity2 extends Activity {
                     if (!error) {
                         // User successfully stored in MySQL
                         // Now store the user in sqlite
-                        String uid = jObj.getString("uid");
 
-                        JSONObject user = jObj.getJSONObject("user");
-                        String name = user.getString("name");
-                        String email = user.getString("email");
-                        String created_at = user.getString("created_at");
-                        String nric = user.getString("nric");
-                        String org_name = user.getString("org_name");
-                        String uen = user.getString("uen");
-                        String liason_contact = user.getString("liason_contact");
-                        String address = user.getString("address");
-                        String postalcode = user.getString("postalcode");
-                        String gender = user.getString("gender");
-                        String contactnumber = user.getString("contactnumber");
-                        String nationality = user.getString("nationality");
-                        String race = user.getString("race");
-                        String specialization = user.getString("specialization");
-                        String occupation = user.getString("occupation");
-                        String languagespoken = user.getString("languagespoken");
-                        String languagewritten = user.getString("languagewritten");
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, languagespoken, languagewritten);
+                        db.addUser(jObj);
 
                         Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
@@ -216,7 +199,7 @@ public class RegisterActivity2 extends Activity {
         }) {
 
             @Override
-            protected Map<String, String> getParams() {
+            protected Map<String, String> getParams() { //sending
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("name", name);

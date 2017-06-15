@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +41,7 @@ public class RegisterActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_cop);
+        setContentView(R.layout.activity_register);
         //Edit Text
         inputFullName = (EditText) findViewById(R.id.name);
         inputNric = (EditText) findViewById(R.id.nric);
@@ -76,6 +77,10 @@ public class RegisterActivity extends Activity {
         }
 
         // Register Button Click event
+        if(btnNextPage==null)
+            Log.i("Test", "btnNextPage is null");
+        else
+            Log.i("Test", "btnNextPage is not null");
         btnNextPage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if (inputMale.isChecked()){
@@ -85,25 +90,25 @@ public class RegisterActivity extends Activity {
                 {
                     radioValue = "Female";
                 }
-                SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-                editor.putString("fullname", inputFullName.getText().toString());
-                editor.putString("nric", inputNric.getText().toString());
-                editor.putString("address", inputAddress.getText().toString());
-                editor.putString("postalcode", inputPostalCode.getText().toString());
-                editor.putString("gender", radioValue.toString());
-                editor.putString("contactnumber", inputContact.getText().toString());
-                editor.putString("email", inputEmail.getText().toString());
-                editor.putString("password", inputPassword.getText().toString());
-                editor.commit();
 
                 if (!inputFullName.getText().toString().isEmpty() && !inputNric.getText().toString().isEmpty() && !inputAddress.getText().toString().isEmpty() && !inputPostalCode.getText().toString().isEmpty() && !inputContact.getText().toString().isEmpty() && !inputEmail.getText().toString().isEmpty() && !inputPassword.getText().toString().isEmpty()) {
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
                             .show();
+                    return;
                 }
                 Intent i = new Intent(getApplicationContext(),
                         RegisterActivity2.class);
+                i.putExtra("fullname", inputFullName.getText().toString());
+                i.putExtra("nric", inputNric.getText().toString());
+                i.putExtra("address", inputAddress.getText().toString());
+                i.putExtra("postalcode", inputPostalCode.getText().toString());
+                i.putExtra("gender", radioValue.toString());
+                i.putExtra("contactnumber", inputContact.getText().toString());
+                i.putExtra("email", inputEmail.getText().toString());
+                i.putExtra("password", inputPassword.getText().toString());
+
                 startActivity(i);
                 finish();
             }

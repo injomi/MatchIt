@@ -152,31 +152,8 @@ public class RegisterActivityCop extends Activity {
                     if (!error) {
                         // User successfully stored in MySQL
                         // Now store the user in sqlite
-                        String uid = jObj.getString("uid");
-
-                        JSONObject user = jObj.getJSONObject("user");
-                        String name = user.getString("name");
-                        String email = user.getString("email");
-                        String created_at = user.getString("created_at");
-                        String nric = user.getString("nric");
-                        String org_name = user.getString("org_name");
-                        String uen = user.getString("uen");
-                        String liason_contact = user.getString("liason_contact");
-                        String address = "";
-                        String postalcode = "";
-                        String gender = "";
-                        String contactnumber = "";
-                        String nationality = "";
-                        String race = "";
-                        String specialization = "";
-                        String occupation = "";
-                        String languagespoken = "";
-                        String languagewritten = "";
-
-
-
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, languagespoken, languagewritten);
+                        db.addUser(jObj);
 
                         Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
@@ -221,6 +198,16 @@ public class RegisterActivityCop extends Activity {
                 params.put("org_name", org_name);
                 params.put("uen", uen);
                 params.put("liason_contact", liason_contact);
+                params.put("address", address);
+                params.put("postalcode", postalcode);
+                params.put("gender", gender);
+                params.put("contactnumber", contactnumber);
+                params.put("nationality", nationality);
+                params.put("race", race);
+                params.put("specialization", specialization);
+                params.put("occupation", occupation);
+                params.put("languagespoken", languagespoken);
+                params.put("languagewritten", languagewritten);
 
                 return params;
             }

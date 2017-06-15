@@ -12,6 +12,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
@@ -58,8 +61,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
-                + KEY_CREATED_AT + " TEXT" + ")";
+                + KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT," +
+                KEY_CREATED_AT + " TEXT," + KEY_NRIC + " TEXT," +
+                KEY_ORG_NAME + " TEXT," +  KEY_UEN + " TEXT," +
+                KEY_CONTACT + " TEXT," + KEY_ADDRESS + " TEXT," +
+                KEY_POSTALCODE + " TEXT," + KEY_GENDER + " TEXT," +
+                KEY_CONTACTNUMBER + " TEXT," + KEY_NATIONALITY + " TEXT," +
+                KEY_RACE + " TEXT," + KEY_SPECIALIZATION + " TEXT,"  +
+                KEY_OCCUPATION + " TEXT,"  + KEY_LANGSPOKEN + " TEXT,"  +
+                KEY_LANGWRITTEN + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
 
         Log.d(TAG, "Database tables created");
@@ -78,9 +88,35 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String name, String email, String uid, String created_at, String nric, String org_name, String uen, String liason_contact, String address, String postalcode, String gender, String contactnumber, String nationality, String race, String specialization, String occupation, String languagespoken, String languagewritten) {
+    public void addUser(JSONObject jObj) {
+        String uid,name,email,created_at,nric,org_name,uen,liason_contact,address,postalcode,gender,contactnumber,nationality,
+                race,specialization,occupation,languagespoken,languagewritten;
+        try {
+             uid = jObj.getString("uid");
+             JSONObject user = jObj.getJSONObject("user");
+             name = user.getString("name");
+             email = user.getString("email");
+             created_at = user.getString("created_at");
+             nric = user.getString("nric");
+             org_name = user.getString("org_name");
+             uen = user.getString("uen");
+             liason_contact = user.getString("liason_contact");
+             address = user.getString("address");
+             postalcode = user.getString("postalcode");
+             gender = user.getString("gender");
+             contactnumber = user.getString("contactnumber");
+             nationality = user.getString("nationality");
+             race = user.getString("race");
+             specialization = user.getString("specialization");
+             occupation = user.getString("occupation");
+             languagespoken = user.getString("languagespoken");
+             languagewritten = user.getString("languagewritten");
+        }catch(JSONException e){
+            Log.i("Test",e.toString());
+            return;
+        }
         SQLiteDatabase db = this.getWritableDatabase();
-
+        Log.i("Test", "Add name: " + name + ", Add email: " + email);
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name); // Name
         values.put(KEY_EMAIL, email); // Email
@@ -143,7 +179,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         // return user
-        Log.d(TAG, "Fetching user from Sqlite: " + user.toString());
+        Log.d("Test", "Fetching user from Sqlite: " + user.toString());
 
         return user;
     }

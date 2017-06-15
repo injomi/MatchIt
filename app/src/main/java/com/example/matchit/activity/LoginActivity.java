@@ -136,20 +136,9 @@ public class LoginActivity extends Activity {
                         session.setLogin(true);
 
                         // Now store the user in SQLite
-                        String uid = jObj.getString("uid");
-
-                        JSONObject user = jObj.getJSONObject("user");
-                        String name = user.getString("name");
-                        String email = user.getString("email");
-                        String created_at = user
-                                .getString("created_at");
-                        String nric = user.getString("nric");
-                        String org_name = user.getString("org_name");
-                        String uen = user.getString("uen");
-                        String liason_contact = user.getString("liason_contact");
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at, nric, org_name, uen, liason_contact);
+                        db.addUser(jObj);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
