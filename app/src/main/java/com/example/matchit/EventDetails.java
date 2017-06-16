@@ -23,4 +23,9 @@ public class EventDetails extends Fragment {
         //return super.onCreateView(inflater, container, savedInstanceState);
         return myView;
     }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 }
