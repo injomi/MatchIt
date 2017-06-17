@@ -7,9 +7,12 @@
     android:id="@+id/cv"
     card_view:cardElevation="5dp"
     card_view:cardUseCompatPadding="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     >
 
     <RelativeLayout
+        android:background="#A9A9A9"
         android:layout_width="match_parent"
         android:layout_height="140dp">
         <ImageView

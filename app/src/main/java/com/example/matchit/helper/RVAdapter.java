@@ -3,6 +3,7 @@ package com.example.matchit.helper;
 import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import java.util.List;
  */
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {
+
     public static class EventViewHolder extends RecyclerView.ViewHolder {
 
         CardView cv;
@@ -38,6 +40,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {
             event_name = (TextView)itemView.findViewById(R.id.event_name);
             event_pb = (ProgressBar)itemView.findViewById(R.id.event_pb);
             event_sd = (TextView)itemView.findViewById(R.id.event_sd);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    Log.i("Test",event_name.getText().toString() + " clicked");
+                }
+            });
         }
     }
 
