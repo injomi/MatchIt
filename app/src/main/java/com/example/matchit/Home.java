@@ -36,7 +36,7 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.home, container, false);
-        db = FirebaseDatabase.getInstance().getReference();
+
         //return super.onCreateView(inflater, container, savedInstanceState);
         return myView;
     }
@@ -48,8 +48,10 @@ public class Home extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
+        super.onViewCreated(view, savedInstanceState);
+        Log.i("Test","hit here");
+        db = FirebaseDatabase.getInstance().getReference();
         rv = (RecyclerView)view.findViewById(R.id.rv);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
@@ -57,13 +59,15 @@ public class Home extends Fragment {
         RVAdapter adapter = new RVAdapter(events);
         rv.setAdapter(adapter);
 
-        db.addValueEventListener(new ValueEventListener() {
+        db.child("/events").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 events = new ArrayList<Event>();
+
                 for(DataSnapshot child : dataSnapshot.getChildren()){
+                    Log.i("Test","Key -> " + child.getKey());
                     Event event = child.getValue(Event.class);
                     events.add(event);
                 }

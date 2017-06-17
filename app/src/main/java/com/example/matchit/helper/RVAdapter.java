@@ -1,15 +1,21 @@
 package com.example.matchit.helper;
 
+import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.matchit.R;
 import com.example.matchit.model.Event;
+import com.example.matchit.model.Session;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,14 +26,18 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {
     public static class EventViewHolder extends RecyclerView.ViewHolder {
 
         CardView cv;
-        TextView par_label;
+        TextView event_desc;
         TextView event_name;
+        ProgressBar event_pb;
+        TextView event_sd;
 
         EventViewHolder(View itemView) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cv);
-            par_label = (TextView)itemView.findViewById(R.id.par_label);
+            event_desc = (TextView)itemView.findViewById(R.id.event_desc);
             event_name = (TextView)itemView.findViewById(R.id.event_name);
+            event_pb = (ProgressBar)itemView.findViewById(R.id.event_pb);
+            event_sd = (TextView)itemView.findViewById(R.id.event_sd);
         }
     }
 
@@ -46,17 +56,28 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {
 
     @Override
     public void onBindViewHolder(EventViewHolder eventViewHolder, int i) {
-        String name = "";
-        String part = "Participant: ";
+        String name,description,startDate;
         Event event = events.get(i);
         if(event!=null){
             name = event.getName();
-            if(event.getSessions().size()>0){
-                part += String.valueOf(event.getSessions().get(0).getVolunteerNo());
+            description = event.getDescription();
+            startDate = event.getStartDate();
+            int max = 0;
+            int count = 0;
+            for(Session s : event.getSessions()){
+                max += s.getVolunteerMax();
+                count += s.getVolunteerNo();
             }
+            eventViewHolder.event_pb.setMax(max);
+            eventViewHolder.event_pb.setProgress(count);
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+//                eventViewHolder.event_pb.setProgress(count,true);
+//            else
+//                eventViewHolder.event_pb.setProgress(count);
+            eventViewHolder.event_desc.setText(description);
+            eventViewHolder.event_name.setText(name);
+            eventViewHolder.event_sd.setText(startDate);
         }
-        eventViewHolder.par_label.setText(part);
-        eventViewHolder.event_name.setText(name);
     }
 
     @Override
