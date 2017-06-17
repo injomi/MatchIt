@@ -31,49 +31,210 @@
                             />
                     </LinearLayout>
                 </HorizontalScrollView>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp">
-
-                <TabHost
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@android:id/tabhost"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#EFEFEF">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-
-                        <TabWidget
-                            android:id="@android:id/tabs"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content" />
-
-                        <FrameLayout
-                            android:id="@android:id/tabcontent"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
-
-                            <FrameLayout
-                                android:id="@+id/tab_1"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent" />
-
-                            <FrameLayout
-                                android:id="@+id/tab_2"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent" />
-
-                        </FrameLayout>
-                    </LinearLayout>
-                </TabHost>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    <Button
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#575757"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:textColor="#FFFFFF"
+        android:id="@+id/viewOrganizationInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/scrollView3"
+        android:text="View Organization Info"
+        android:drawableLeft="@drawable/ic_info"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dip"
+        android:text="Event Information"
+        android:textColor="@drawable/border"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
+        android:gravity="center"
+        android:layout_below="@+id/viewOrganizationInfo"/>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:text="Event Name:"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/eventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_alignStart="@+id/eventLocation"
+        android:layout_below="@+id/textView"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView7"
+        android:text="Event Location:"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/eventLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/eventName"
+        android:layout_toEndOf="@+id/textView21"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/eventName"
+        android:text="Organized By:"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/organizedBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/textView23"
+        android:text="TextView"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView21"
+        android:text="Event Timing:"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/eventStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@+id/textView21"
+        android:layout_toEndOf="@+id/textView21"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/eventEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@+id/eventLocation"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Description:"
+        android:paddingBottom="10px"
+        android:layout_below="@+id/spinnerSession"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/eventDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_alignBaseline="@+id/textView28"
+        android:layout_alignBottom="@+id/textView28"
+        android:layout_toEndOf="@+id/textView28"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Session: "
+        android:paddingBottom="10px"
+        android:layout_below="@+id/textView25"
+        android:layout_toStartOf="@+id/eventStartTime" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category:"
+        android:layout_below="@+id/textView23"
+        android:layout_alignStart="@+id/textView23"
+        android:paddingBottom="10px"/>
+
+    <TextView
+        android:id="@+id/eventCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView23"
+        android:layout_toEndOf="@+id/textView32"
+        android:text="TextView"
+        android:paddingBottom="10px"/>
+
+    <Spinner
+        android:id="@+id/spinnerSession"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10px"
+        android:layout_below="@+id/eventStartTime"
+        android:layout_alignStart="@+id/eventLocation" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:background="@drawable/buttonshape2"
+            android:shadowColor="#575757"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:id="@+id/buttonReg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="13dp"
+            android:layout_alignParentEnd="true" />
+        <Button
+            android:background="@drawable/buttonshape3"
+            android:shadowColor="#575757"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:id="@+id/buttonCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unregister Event"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="13dp"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"/>
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.matchit;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -38,6 +39,11 @@ public class Home extends Fragment {
         db = FirebaseDatabase.getInstance().getReference();
         //return super.onCreateView(inflater, container, savedInstanceState);
         return myView;
+    }
+    public void sendMessage(View view)
+    {
+        Intent intent = new Intent(getActivity(), EventDetails.class);
+        startActivity(intent);
     }
 
     @Override
