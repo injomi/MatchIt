@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/scrollView3"
+        android:layout_below="@id/scrollView3"
         android:text="View Organization Info"
         android:drawableLeft="@drawable/ic_info"/>
 
@@ -55,18 +55,19 @@
         android:layout_height="wrap_content"
         android:padding="15dip"
         android:text="Event Information"
-        android:textColor="@drawable/border"
         android:textSize="22sp"
         android:textStyle="bold|italic"
         android:gravity="center"
-        android:layout_below="@+id/viewOrganizationInfo"/>
+        android:layout_below="@id/viewOrganizationInfo"/>
+    <!--android:textColor="@drawable/border"
+    the above code is causing a crash for nougats OS-->
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
+        android:layout_below="@id/textView"
         android:text="Event Name:"
         android:paddingBottom="10px"/>
 
@@ -76,7 +77,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:layout_alignStart="@+id/eventLocation"
-        android:layout_below="@+id/textView"
+        android:layout_below="@id/textView"
         android:paddingBottom="10px"/>
 
     <TextView
@@ -84,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView7"
+        android:layout_below="@id/textView7"
         android:text="Event Location:"
         android:paddingBottom="10px"/>
 
@@ -94,17 +95,17 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:layout_marginStart="10dp"
-        android:layout_below="@+id/eventName"
-        android:layout_toEndOf="@+id/textView21"
+        android:layout_below="@id/eventName"
+        android:layout_toEndOf="@id/textView21"
         android:paddingBottom="10px"/>
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:layout_below="@id/textView"
         android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/eventName"
+        android:layout_toEndOf="@id/eventName"
         android:text="Organized By:"
         android:paddingBottom="10px"/>
 
@@ -112,8 +113,8 @@
         android:id="@+id/organizedBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/textView23"
+        android:layout_below="@id/textView"
+        android:layout_toEndOf="@id/textView23"
         android:text="TextView"
         android:paddingBottom="10px"/>
 
@@ -122,7 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView21"
+        android:layout_below="@id/textView21"
         android:text="Event Timing:"
         android:paddingBottom="10px"/>
 
@@ -131,8 +132,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_below="@+id/textView21"
-        android:layout_toEndOf="@+id/textView21"
+        android:layout_below="@id/textView21"
+        android:layout_toEndOf="@id/textView21"
         android:paddingBottom="10px"/>
 
     <TextView
@@ -140,7 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_below="@+id/eventLocation"
+        android:layout_below="@id/eventLocation"
         android:layout_centerHorizontal="true"
         android:paddingBottom="10px"/>
 
@@ -158,9 +159,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_alignBaseline="@+id/textView28"
-        android:layout_alignBottom="@+id/textView28"
-        android:layout_toEndOf="@+id/textView28"
+        android:layout_alignBaseline="@id/textView28"
+        android:layout_alignBottom="@id/textView28"
+        android:layout_toEndOf="@id/textView28"
         android:paddingBottom="10px"/>
 
     <TextView
@@ -169,24 +170,24 @@
         android:layout_height="wrap_content"
         android:text="Select Session: "
         android:paddingBottom="10px"
-        android:layout_below="@+id/textView25"
-        android:layout_toStartOf="@+id/eventStartTime" />
+        android:layout_below="@id/textView25"
+        android:layout_toStartOf="@id/eventStartTime" />
 
     <TextView
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Category:"
-        android:layout_below="@+id/textView23"
-        android:layout_alignStart="@+id/textView23"
+        android:layout_below="@id/textView23"
+        android:layout_alignStart="@id/textView23"
         android:paddingBottom="10px"/>
 
     <TextView
         android:id="@+id/eventCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView23"
-        android:layout_toEndOf="@+id/textView32"
+        android:layout_below="@id/textView23"
+        android:layout_toEndOf="@id/textView32"
         android:text="TextView"
         android:paddingBottom="10px"/>
 
@@ -195,8 +196,8 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:paddingBottom="10px"
-        android:layout_below="@+id/eventStartTime"
-        android:layout_alignStart="@+id/eventLocation" />
+        android:layout_below="@id/eventStartTime"
+        android:layout_alignStart="@id/eventLocation" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

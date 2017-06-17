@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.Button;
 
 public class EventDetails extends Fragment implements  View.OnClickListener {
 
+    public static final String EVENT_ID_KEY = "eventID";
     View myView;
     private Button btnViewCompanyInfo;
     private Button regEvent;
@@ -30,6 +32,12 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         regEvent.setOnClickListener(this);
 
         //return super.onCreateView(inflater, container, savedInstanceState);
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            int eventID = bundle.getInt(EVENT_ID_KEY, 0);
+            Log.i("Test","fragment argument of eventID -> " + eventID);
+        }
         return myView;
     }
 

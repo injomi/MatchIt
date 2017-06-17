@@ -1,6 +1,7 @@
 package com.example.matchit;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -40,17 +41,12 @@ public class Home extends Fragment {
         //return super.onCreateView(inflater, container, savedInstanceState);
         return myView;
     }
-    public void sendMessage(View view)
-    {
-        Intent intent = new Intent(getActivity(), EventDetails.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-
         super.onViewCreated(view, savedInstanceState);
-        Log.i("Test","hit here");
+
+        FragmentManager fragmentManager = getFragmentManager();
         db = FirebaseDatabase.getInstance().getReference();
         rv = (RecyclerView)view.findViewById(R.id.rv);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
