@@ -1,6 +1,7 @@
 package com.example.matchit;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -46,8 +47,13 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         //do what you want to do when button is clicked
         switch (v.getId()) {
             case R.id.viewOrganizationInfo:
-                Intent intent = new Intent(getActivity(), OrganizationInfo.class);
-                startActivity(intent);
+                FragmentManager fragmentManager = ((HomeScreen)v.getContext()).getFragmentManager();
+                OrganizationInfo organizationInfo = new OrganizationInfo();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame
+                                , organizationInfo)
+                        .commit();
                 break;
         }
     }

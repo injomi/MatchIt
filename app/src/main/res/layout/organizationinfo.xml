@@ -11,10 +11,12 @@
         android:layout_height="wrap_content"
         android:padding="15dip"
         android:text="Organization Information"
-        android:textColor="@drawable/border"
+
         android:textSize="24sp"
         android:textStyle="bold|italic"
         android:gravity="center"/>
+    <!--android:textColor="@drawable/border"
+    this code is causing a crash on naugat OS-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >

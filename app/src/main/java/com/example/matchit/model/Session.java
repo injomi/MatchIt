@@ -10,14 +10,22 @@ public class Session {
     String time;
     int volunteerMax;
     int volunteerNo;
+    int sessionID;
 
-    public Session(){}
+    public Session(){
+        date = "";
+        time = "";
+        volunteerMax = 0;
+        volunteerNo = 0;
+        sessionID = 0;
+    }
 
-    public Session(String d, String t, int vm, int vn){
+    public Session(String d, String t, int vm, int vn, int id){
         date = d;
         time = t;
         volunteerNo = vn;
         volunteerMax = vm;
+        sessionID = id;
     }
 
     public String getDate() {
@@ -58,6 +66,14 @@ public class Session {
 
     public void decVolunteerNo(){
         volunteerNo--;
+    }
+
+    public int getSessionID() {
+        return sessionID;
+    }
+
+    public void setSessionID(int sessionID) {
+        this.sessionID = sessionID;
     }
 
 
