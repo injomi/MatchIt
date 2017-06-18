@@ -96,7 +96,7 @@
         android:text="Comments: "
         android:layout_width="280dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/buttonSubmit"
+        android:layout_above="@id/buttonSubmit"
         android:layout_alignStart="@+id/textView5" />
 
 

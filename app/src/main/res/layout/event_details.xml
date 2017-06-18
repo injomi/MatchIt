@@ -28,6 +28,8 @@
                             android:layout_width="383dp"
                             android:layout_height="161dp"
                             android:paddingRight="20dp"
+                            android:src = "@drawable/spd"
+                            android:layout_gravity="center"
                             />
                     </LinearLayout>
                 </HorizontalScrollView>
@@ -200,7 +202,9 @@
         android:layout_alignStart="@id/eventLocation" />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
         <Button
             android:background="@drawable/buttonshape2"
             android:shadowColor="#575757"

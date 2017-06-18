@@ -7,17 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by josephtyx on 4/6/17.
- */
-
 public class Availability extends Fragment {
     View myView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.availability, container, false);
+        myView = inflater.inflate(R.layout.myavailability, container, false);
 
         //return super.onCreateView(inflater, container, savedInstanceState);
         return myView;
