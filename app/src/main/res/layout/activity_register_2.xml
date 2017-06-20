@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:text="Race/Religion"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:paddingBottom="11dp"/>
 
         <Spinner
             android:id="@+id/spinner"
@@ -46,7 +47,12 @@
             android:drawSelectorOnTop="true"
             android:entries="@array/array_name"
             android:textSize="30sp"
-            android:required= "true"/>
+            android:required= "true"
+            android:paddingBottom="11dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
         <EditText
             android:id="@+id/specialized"
@@ -60,7 +66,8 @@
             android:singleLine="true"
             android:textColor="@color/input_register"
             android:textColorHint="@color/input_register_hint"
-            android:required= "true"/>
+            android:required= "true"
+            />
 
         <EditText
             android:id="@+id/occupation"
@@ -203,17 +210,22 @@
             android:textColor="@color/white" />
 
         <!-- Link to Login Screen -->
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <Button
             android:id="@+id/btnLinkToLoginScreen"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
+            android:layout_gravity="top"
             android:background="@null"
             android:text="@string/btn_link_to_login"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+</RelativeLayout>
     </LinearLayout>
 
 </RelativeLayout>

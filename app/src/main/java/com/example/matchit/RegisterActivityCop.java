@@ -86,20 +86,7 @@ public class RegisterActivityCop extends Activity {
             public void onClick(View view) {
                 String name = inputFullName.getText().toString().trim();
                 String nric = inputNric.getText().toString().trim();
-                if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}"))
-                {
-                    Toast.makeText(getApplicationContext(),
-                            "NRIC not in the right format", Toast.LENGTH_LONG)
-                            .show();
-                }
                 String email = inputEmail.getText().toString().trim();
-                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                if (!email.matches(emailPattern))
-                {
-                    Toast.makeText(getApplicationContext(),
-                            "Email not in the right format", Toast.LENGTH_LONG)
-                            .show();
-                }
                 String password = inputPassword.getText().toString().trim();
                 String org_name = inputOrgName.getText().toString().trim();
                 String uen = inputUen.getText().toString().trim();
@@ -117,6 +104,21 @@ public class RegisterActivityCop extends Activity {
 
 
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !nric.isEmpty() && !org_name.isEmpty() && !uen.isEmpty() && !liason_contact.isEmpty()) {
+                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}"))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "NRIC not in the right format", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+                    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                    if (!email.matches(emailPattern))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Email not in the right format", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
                     registerUser(name, email, password, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, languagespoken, languagewritten);
                 } else {
                     Toast.makeText(getApplicationContext(),
