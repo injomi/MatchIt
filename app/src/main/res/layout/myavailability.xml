@@ -8,12 +8,29 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background">
+        <TextView
+            android:id="@+id/textView"
+            android:text="MY AVAILABILITY"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dip"/>
+        <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/eventTitle"
+        android:background="@color/input_login"
+        android:id="@+id/view"
+        android:paddingBottom="15px"/>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Select Area Of Interest:"
-            android:textSize="18sp" />
+            android:textSize="17sp"
+            android:paddingTop="15px"/>
 
         <ListView android:id="@+id/listViewCat"
             android:layout_width="fill_parent"
@@ -24,7 +41,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="How Many People: %d"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
         <SeekBar android:id="@+id/people"
             android:max="20"
@@ -36,34 +53,54 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="For What Date:"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
-        <Button android:id="@+id/date"
-            android:text="dd - MMMM – yyyy"
+        <Button
+            android:id="@+id/date"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@drawable/buttonshape"
-            android:drawableLeft="@drawable/calendar"/>
+            android:drawableLeft="@drawable/calendar"
+            android:drawablePadding="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="60dp"
+            android:text="dd - MMMM – yyyy"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="For What Time:"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
         <Button android:id="@+id/time"
             android:text="HH:mm"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/buttonshape"
-            android:drawableLeft="@drawable/clock"/>
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:drawableLeft="@drawable/clock"
+            android:drawablePadding="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="60dp"
+            />
 
         <Button android:id="@+id/cfmavail"
             android:text="Confirm Availability"
             android:layout_marginTop="15dip"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/buttonshape"/>
+            android:background="@drawable/buttonshape"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
 
     </LinearLayout>
 

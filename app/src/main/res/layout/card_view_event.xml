@@ -12,9 +12,9 @@
     >
 
     <RelativeLayout
-        android:background="#A9A9A9"
         android:layout_width="match_parent"
-        android:layout_height="140dp">
+        android:layout_height="140dp"
+        android:background="@drawable/background">
         <ImageView
             android:layout_width="150dp"
             android:layout_height="match_parent"
@@ -23,7 +23,8 @@
             android:layout_alignParentLeft="true"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src = "@drawable/spd"/>
+            android:src = "@drawable/spd"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -31,7 +32,8 @@
             android:id="@+id/labels"
             android:orientation="vertical"
             android:layout_toRightOf="@id/image_card"
-            android:weightSum="1">
+            android:weightSum="1"
+            >
 
             <TextView
                 android:id="@+id/event_name"
@@ -52,12 +54,13 @@
                 android:id="@+id/event_sd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Date"/>
+                android:text="Start Date"
+                android:paddingBottom="7dp"/>
 
             <ProgressBar
                 android:id="@+id/event_pb"
                 style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:progressDrawable="@drawable/custom_progress_bar" />
         </LinearLayout>

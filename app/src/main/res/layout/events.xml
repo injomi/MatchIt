@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-
     <TextView
         android:id="@+id/eventTitle"
-        android:layout_width="wrap_content"
+        android:text="EVENTS JOINED"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:textColor="@color/input_login"
-        android:text="Events Joined"
+        android:padding="20dip"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
     <View
         android:layout_width="fill_parent"
@@ -23,9 +24,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="See the current events you joined!"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/view"
-        android:layout_alignParentStart="true" />
+        android:text="See the current events you joined!"
+        android:textSize="17sp"
+        android:paddingTop="15px"/>
 
     <ListView
         android:layout_width="match_parent"

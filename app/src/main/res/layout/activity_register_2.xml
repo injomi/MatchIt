@@ -17,6 +17,12 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
         <EditText
             android:id="@+id/nationality"
             android:layout_width="fill_parent"
@@ -48,7 +54,8 @@
             android:entries="@array/array_name"
             android:textSize="30sp"
             android:required= "true"
-            android:paddingBottom="11dp"/>
+            android:paddingBottom="11dp"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +91,7 @@
             android:required= "true"/>
 
 
-        <!-- Login Button -->
+        <!-- CheckBox -->
 
         <TextView
             android:id="@+id/languageTextView"
@@ -104,15 +111,21 @@
                 android:layout_height="wrap_content"
                 android:text="English"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:tag="English"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight = "50dp"/>
 
             <CheckBox
                 android:id="@+id/checkBoxEnglishWritten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:tag="English"
                 android:text="English"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                />
 
         </LinearLayout>
 
@@ -126,7 +139,10 @@
                 android:layout_height="wrap_content"
                 android:text="Mandarin"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:tag="Mandarin"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight = "34dp"/>
 
             <CheckBox
                 android:id="@+id/checkBoxMandarinWritten"
@@ -134,7 +150,9 @@
                 android:layout_height="wrap_content"
                 android:text="Mandarin"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:tag="Mandarin"
+                android:onClick="onCheckboxClicked"/>
         </LinearLayout>
 
         <LinearLayout
@@ -147,7 +165,10 @@
                 android:layout_height="wrap_content"
                 android:text="Malay"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:tag="Malay"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight = "57dp"/>
 
             <CheckBox
                 android:id="@+id/checkBoxMalayWritten"
@@ -155,7 +176,9 @@
                 android:layout_height="wrap_content"
                 android:text="Malay"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:tag="Malay"
+                android:onClick="onCheckboxClicked"/>
         </LinearLayout>
 
         <LinearLayout
@@ -168,7 +191,10 @@
                 android:layout_height="wrap_content"
                 android:text="Tamil"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:tag="Tamil"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight = "61dp"/>
 
             <CheckBox
                 android:id="@+id/checkBoxTamilWritten"
@@ -176,7 +202,9 @@
                 android:layout_height="wrap_content"
                 android:text="Tamil"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:tag="Tamil"
+                android:onClick="onCheckboxClicked"/>
         </LinearLayout>
 
         <LinearLayout
@@ -189,7 +217,10 @@
                 android:layout_height="wrap_content"
                 android:text="Others"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:tag="Others"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight = "53dp"/>
 
             <CheckBox
                 android:id="@+id/checkBoxOthersWritten"
@@ -197,7 +228,9 @@
                 android:layout_height="wrap_content"
                 android:text="Others"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:tag="Others"
+                android:onClick="onCheckboxClicked"/>
         </LinearLayout>
 
         <Button

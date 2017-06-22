@@ -149,11 +149,6 @@ public class HomeScreen extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new Events())
                     .commit();
-        } else if (id == R.id.nav_statistics) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , new Statistics())
-                    .commit();
         } else if (id == R.id.nav_home) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame

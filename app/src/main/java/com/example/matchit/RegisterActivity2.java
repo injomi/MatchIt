@@ -6,7 +6,6 @@ package com.example.matchit;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request.Method;
@@ -29,6 +29,7 @@ import com.example.matchit.helper.SessionManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +46,8 @@ public class RegisterActivity2 extends Activity {
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
+    ArrayList<String> list,list2;
+    TextView txt,txt2;
 
 
     @Override
@@ -66,6 +69,9 @@ public class RegisterActivity2 extends Activity {
         tamilWritten = (CheckBox) findViewById(R.id.checkBoxTamilWritten);
         othersSpoken = (CheckBox) findViewById(R.id.checkBoxOthers);
         othersWritten = (CheckBox) findViewById(R.id.checkBoxOthersWritten);
+        list = new ArrayList<String>();
+        list2 = new ArrayList<String>();
+
 
 
         //Buttons
@@ -114,8 +120,15 @@ public class RegisterActivity2 extends Activity {
                 String org_name = "";
                 String uen = "";
                 String liason_contact = "";
-                String languagespoken = "";
-                String languagewritten = "";
+
+                for (String str : list) {
+                    txt.setText(txt.getText().toString() + " , " + str);
+                }
+                for (String str : list2) {
+                    txt2.setText(txt2.getText().toString() + " , " + str);
+                }
+                String languagespoken = txt.getText().toString();
+                String languagewritten = txt2.getText().toString();
 
                 registerUser(name, email, password, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, languagespoken, languagewritten);
 
@@ -133,6 +146,56 @@ public class RegisterActivity2 extends Activity {
             }
         });
 
+    }
+
+    public void onCheckboxClicked(View view) {
+
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.checkBoxEnglish:
+                list.add(englishSpoken.getTag().toString());
+
+
+                break;
+            case R.id.checkBoxEnglishWritten:
+                list2.add(englishWritten.getTag().toString());
+
+                break;
+
+            case R.id.checkBoxMandarin:
+                list.add(mandarinSpoken.getTag().toString());
+
+                break;
+            case R.id.checkBoxMandarinWritten:
+                list2.add(mandarinWritten.getTag().toString());
+
+                break;
+            case R.id.checkBoxMalay:
+                list.add(malaySpoken.getTag().toString());
+
+                break;
+            case R.id.checkBoxMalayWritten:
+                list2.add(malayWritten.getTag().toString());
+
+                break;
+            case R.id.checkBoxTamil:
+                list.add(tamilSpoken.getTag().toString());
+
+                break;
+            case R.id.checkBoxTamilWritten:
+                list2.add(tamilWritten.getTag().toString());
+
+                break;
+            case R.id.checkBoxOthers:
+                list.add(othersSpoken.getTag().toString());
+
+                break;
+            case R.id.checkBoxOthersWritten:
+                list2.add(othersWritten.getTag().toString());
+
+                break;
+        }
     }
 
     /**

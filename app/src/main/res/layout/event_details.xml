@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/activity_detail"
-    android:background="#FFFF">
+    android:background="@drawable/background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,14 +37,14 @@
     </ScrollView>
     <Button
         android:background="@drawable/buttonshape"
-        android:shadowColor="#575757"
+        android:shadowColor="#000000"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
         android:textColor="#FFFFFF"
         android:id="@+id/viewOrganizationInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@id/scrollView3"
@@ -56,9 +56,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="15dip"
-        android:text="Event Information"
+        android:text="EVENT INFORMATION"
         android:textSize="22sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:gravity="center"
         android:layout_below="@id/viewOrganizationInfo"/>
     <!--android:textColor="@drawable/border"
@@ -213,8 +213,8 @@
             android:shadowRadius="5"
             android:textColor="#FFFFFF"
             android:id="@+id/buttonReg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
             android:text="Register"
             android:gravity="center"
             android:layout_alignParentBottom="true"
@@ -229,8 +229,8 @@
             android:shadowRadius="5"
             android:textColor="#FFFFFF"
             android:id="@+id/buttonCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
             android:text="Unregister Event"
             android:gravity="center"
             android:layout_alignParentBottom="true"
