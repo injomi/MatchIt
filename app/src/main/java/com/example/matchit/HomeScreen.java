@@ -83,16 +83,20 @@ public class HomeScreen extends AppCompatActivity
         txtName.setText(name);
         txtEmail.setText(email);
 
-        if (getIntent().getExtras() != null) {
-            for (String key : getIntent().getExtras().keySet()) {
-                String value = getIntent().getExtras().getString(key);
-                Log.d("Test", "Key: " + key + " Value: " + value);
-            }
-            getFragmentManager().beginTransaction()
+//        if (getIntent().getExtras() != null) {
+//            for (String key : getIntent().getExtras().keySet()) {
+//                String value = getIntent().getExtras().getString(key);
+//                Log.d("Test", "Key: " + key + " Value: " + value);
+//            }
+//            getFragmentManager().beginTransaction()
+//                    .replace(R.id.content_frame
+//                            , new Home())
+//                    .commit();
+//        }
+        getFragmentManager().beginTransaction()
                     .replace(R.id.content_frame
                             , new Home())
                     .commit();
-        }
     }
 
     private void logoutUser() {
