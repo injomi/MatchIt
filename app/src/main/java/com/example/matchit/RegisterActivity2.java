@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -121,16 +122,17 @@ public class RegisterActivity2 extends Activity {
                 String uen = "";
                 String liason_contact = "";
 
-                for (String str : list) {
-                    txt.setText(txt.getText().toString() + " , " + str);
-                }
-                for (String str : list2) {
-                    txt2.setText(txt2.getText().toString() + " , " + str);
-                }
-                String languagespoken = txt.getText().toString();
-                String languagewritten = txt2.getText().toString();
-
-                registerUser(name, email, password, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, languagespoken, languagewritten);
+//                for (String str : list) {
+//                    txt.setText(txt.getText().toString() + " , " + str);
+//                }
+//                for (String str : list2) {
+//                    txt2.setText(txt2.getText().toString() + " , " + str);
+//                }
+//                String languagespoken = txt.getText().toString();
+//                String languagewritten = txt2.getText().toString();
+                String spoken = TextUtils.join(",",list); //JOEL IS A NOOB
+                String written = TextUtils.join(",",list2); // OMG JOEL IS REALLY A NOOB
+                registerUser(name, email, password, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, spoken, written);
 
             }
         });

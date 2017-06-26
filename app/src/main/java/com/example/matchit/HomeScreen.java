@@ -27,6 +27,7 @@ public class HomeScreen extends AppCompatActivity
 
 
     private SQLiteHandler db;
+    public HashMap<String,String> user;
     private SessionManager session;
 
     @Override
@@ -71,7 +72,7 @@ public class HomeScreen extends AppCompatActivity
 
         // Fetching user details from sqlite
 
-        HashMap<String, String> user = db.getUserDetails();
+        user = db.getUserDetails();
 
 
         String name = user.get("name");
