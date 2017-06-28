@@ -123,7 +123,7 @@
                 android:layout_alignBottom="@id/textView3"
                 android:layout_toEndOf="@id/textView3"
                 android:paddingBottom="20dp"
-                android:text="Text View" />
+                android:text="SPD" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -234,6 +234,11 @@
             android:shadowRadius="5"
             android:text="Register"
             android:textColor="#FFFFFF" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerSession" />
 
         <Button
             android:id="@+id/buttonCancel"
