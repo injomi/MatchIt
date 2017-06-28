@@ -3,17 +3,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_events"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Events" />
         <item
-            android:id="@+id/nav_events"
+            android:id="@+id/nav_my_events"
             android:icon="@drawable/ic_wc_black_24dp"
             android:title="My Events" />
         <item
             android:id="@+id/nav_availability"
             android:icon="@drawable/ic_alarm_on_black_24dp"
             android:title="Availability" />
+        <item
+            android:id="@+id/nav_attendance"
+            android:icon="@drawable/ic_camera_black_24dp"
+            android:title="Take Attendance" />
     </group>
 
     <item android:title="Account">

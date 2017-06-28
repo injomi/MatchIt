@@ -1,245 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_detail"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/activity_detail"
     android:background="@drawable/background">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:id="@+id/scrollView3">
-        <LinearLayout android:orientation="vertical" android:layout_height="fill_parent" android:layout_width="fill_parent">
-                <HorizontalScrollView
-                    android:id="@+id/horizontal_scroll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <LinearLayout
-                        android:id="@+id/linear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-                        <ImageView
-                            android:id="@+id/imageView_Detail_Page1"
-                            android:layout_width="383dp"
-                            android:layout_height="161dp"
-                            android:paddingRight="20dp"
-                            android:src = "@drawable/spd"
-                            android:layout_gravity="center"
-                            />
-                    </LinearLayout>
-                </HorizontalScrollView>
-        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_Detail_Page1"
+                android:layout_width="383dp"
+                android:layout_height="161dp"
+                android:layout_gravity="center"
+                android:paddingRight="20dp"
+                android:src="@drawable/spd" />
+
+            <TextView
+                android:id="@+id/txtViewBlank"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dip" />
+
+            <Button
+                android:id="@+id/viewOrganizationInfo"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/imageView_Detail_Page1"
+                android:background="@drawable/buttonshape"
+                android:drawableLeft="@drawable/ic_info"
+                android:drawablePadding="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="60dp"
+                android:shadowColor="#000000"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:text="View Organization Info"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewOrganizationInfo"
+                android:gravity="center"
+                android:padding="15dip"
+                android:text="EVENT INFORMATION"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            //Event Name
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView"
+                android:layout_marginStart="14dp"
+                android:paddingBottom="20dp"
+                android:text="Event Name: " />
+
+            <TextView
+                android:id="@+id/eventName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textView1"
+                android:layout_alignBottom="@id/textView1"
+                android:layout_toEndOf="@id/textView1"
+                android:paddingBottom="20dp"
+                android:text="Text View" />
+
+            //Event Location
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventName"
+                android:layout_marginStart="14dp"
+                android:paddingBottom="20dp"
+                android:text="Event Location: " />
+
+            <TextView
+                android:id="@+id/eventLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textView2"
+                android:layout_alignBottom="@id/textView2"
+                android:layout_toEndOf="@id/textView2"
+                android:paddingBottom="20dp"
+                android:text="Text View" />
+
+            //Organized By
+
+            <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventLocation"
+            android:layout_marginStart="14dp"
+            android:paddingBottom="20dp"
+            android:text="Organized By: " />
+
+            <TextView
+                android:id="@+id/organizedBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textView3"
+                android:layout_alignBottom="@id/textView3"
+                android:layout_toEndOf="@id/textView3"
+                android:paddingBottom="20dp"
+                android:text="Text View" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/organizedBy"
+                android:text="Event Timing:"
+                android:paddingBottom="20dp"
+                android:layout_marginStart="14dp"/>
+
+            <TextView
+                android:id="@+id/eventStartTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_below="@id/organizedBy"
+                android:layout_toEndOf="@id/textView4"
+                android:paddingBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/organizedBy"
+                android:layout_toEndOf="@id/eventStartTime"
+                android:text=" - "
+                android:paddingBottom="20dp" />
+
+            <TextView
+                android:id="@+id/eventEndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_toEndOf="@id/textView5"
+                android:layout_below="@id/organizedBy"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="10px"/>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView4"
+                android:layout_marginStart="14dp"
+                android:paddingBottom="20dp"
+                android:text="Event Description: " />
+
+            <TextView
+                android:id="@+id/eventDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textView6"
+                android:layout_alignBottom="@id/textView6"
+                android:layout_toEndOf="@id/textView6"
+                android:paddingBottom="20dp"
+                android:text="Text View" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eventDescription"
+                android:layout_marginStart="14dp"
+                android:paddingBottom="20dp"
+                android:text="Category: " />
+
+            <TextView
+                android:id="@+id/eventCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textView7"
+                android:layout_alignBottom="@id/textView7"
+                android:layout_toEndOf="@id/textView7"
+                android:paddingBottom="20dp"
+                android:text="Text View" />
+
+
+
+
+
+            <!--android:textColor="@drawable/border"
+            the above code is causing a crash for nougats OS-->
+
+        </RelativeLayout>
     </ScrollView>
-    <Button
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#000000"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="5"
-        android:textColor="#FFFFFF"
-        android:id="@+id/viewOrganizationInfo"
-        android:layout_width="270dp"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/scrollView3"
-        android:text="View Organization Info"
-        android:drawableLeft="@drawable/ic_info"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dip"
-        android:text="EVENT INFORMATION"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_below="@id/viewOrganizationInfo"/>
-    <!--android:textColor="@drawable/border"
-    the above code is causing a crash for nougats OS-->
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/textView"
-        android:text="Event Name:"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/eventName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_alignStart="@+id/eventLocation"
-        android:layout_below="@id/textView"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/textView7"
-        android:text="Event Location:"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/eventLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_marginStart="10dp"
-        android:layout_below="@id/eventName"
-        android:layout_toEndOf="@id/textView21"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:layout_marginStart="14dp"
-        android:layout_toEndOf="@id/eventName"
-        android:text="Organized By:"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/organizedBy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:layout_toEndOf="@id/textView23"
-        android:text="TextView"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/textView21"
-        android:text="Event Timing:"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/eventStartTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_below="@id/textView21"
-        android:layout_toEndOf="@id/textView21"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/eventEndTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_below="@id/eventLocation"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Event Description:"
-        android:paddingBottom="10px"
-        android:layout_below="@+id/spinnerSession"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:id="@+id/eventDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_alignBaseline="@id/textView28"
-        android:layout_alignBottom="@id/textView28"
-        android:layout_toEndOf="@id/textView28"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Session: "
-        android:paddingBottom="10px"
-        android:layout_below="@id/textView25"
-        android:layout_toStartOf="@id/eventStartTime" />
-
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Category:"
-        android:layout_below="@id/textView23"
-        android:layout_alignStart="@id/textView23"
-        android:paddingBottom="10px"/>
-
-    <TextView
-        android:id="@+id/eventCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView23"
-        android:layout_toEndOf="@id/textView32"
-        android:text="TextView"
-        android:paddingBottom="10px"/>
-
-    <Spinner
-        android:id="@+id/spinnerSession"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10px"
-        android:layout_below="@id/eventStartTime"
-        android:layout_alignStart="@id/eventLocation" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
         <Button
-            android:background="@drawable/buttonshape2"
-            android:shadowColor="#575757"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-            android:textColor="#FFFFFF"
             android:id="@+id/buttonReg"
             android:layout_width="270dp"
             android:layout_height="50dp"
-            android:text="Register"
-            android:gravity="center"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="13dp"
-            android:layout_alignParentEnd="true" />
-        <Button
-            android:background="@drawable/buttonshape3"
+            android:background="@drawable/buttonshape2"
+            android:gravity="center"
             android:shadowColor="#575757"
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="5"
-            android:textColor="#FFFFFF"
+            android:text="Register"
+            android:textColor="#FFFFFF" />
+
+        <Button
             android:id="@+id/buttonCancel"
             android:layout_width="270dp"
             android:layout_height="50dp"
-            android:text="Unregister Event"
-            android:gravity="center"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="13dp"
-            android:layout_alignParentEnd="true"
-            android:visibility="invisible"/>
+            android:background="@drawable/buttonshape3"
+            android:gravity="center"
+            android:shadowColor="#575757"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="Unregister Event"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
 
 
     </RelativeLayout>
-
 </RelativeLayout>
+

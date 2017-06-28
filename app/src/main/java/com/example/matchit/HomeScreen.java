@@ -8,7 +8,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -149,28 +148,28 @@ public class HomeScreen extends AppCompatActivity
         int id = item.getItemId();
         android.app.FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.nav_events) {
+        if (id == R.id.nav_my_events) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new Events())
+                            , new Events()) //My Events
                     .commit();
-        } else if (id == R.id.nav_home) {
+        } else if (id == R.id.nav_events) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new Home())
+                            , new Home()) //Events
                     .commit();
         } else if (id == R.id.nav_availability) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new Availability())
+                            , new Availability()) //My Availability
                     .commit();
         } else if (id == R.id.nav_setting) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new Setting())
+                            , new Setting()) //Account Settings
                     .commit();
         } else if (id == R.id.nav_logout) {
-            logoutUser();
+            logoutUser(); //Logout
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

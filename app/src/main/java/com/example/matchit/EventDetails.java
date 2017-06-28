@@ -3,7 +3,6 @@ package com.example.matchit;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -21,7 +20,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.matchit.activity.LoginActivity;
 import com.example.matchit.app.AppConfig;
 import com.example.matchit.app.AppController;
 

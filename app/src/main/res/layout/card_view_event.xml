@@ -39,7 +39,7 @@
                 android:id="@+id/event_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:layout_marginStart="14dp"
                 android:text="Event"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -48,12 +48,14 @@
                 android:id="@+id/event_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
                 android:text="Description"
                 android:textSize="18sp" />
             <TextView
                 android:id="@+id/event_sd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
                 android:text="Start Date"
                 android:paddingBottom="7dp"/>
 
