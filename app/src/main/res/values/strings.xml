@@ -27,6 +27,12 @@
     <string name="card_view_timing">Timing : </string>
     <string name="btn_view_more">VIEW more</string>
     <string name="card_view_event_name">Event Name</string>
+    //Settings
+    <string name="account_name">Name</string>
+    <string name="account_contactnumber">Contact Number</string>
+    <string name="account_password">Password</string>
+    <string name="account_confirmpassword">Confirm Password</string>
+    <string name="update">Update</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

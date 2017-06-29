@@ -42,13 +42,10 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
     Button btnViewCompanyInfo;
     Button regEvent;
     Button cancelEvent;
-    TextView tv_startTime;
-    TextView tv_endTime;
     TextView tv_description;
     TextView tv_category;
     TextView tv_name;
     TextView tv_location;
-    TextView tv_org;
     Spinner sp_sessions;
 
     JSONObject jObj;
@@ -64,10 +61,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         regEvent.setOnClickListener(this);
         cancelEvent = (Button) myView.findViewById(R.id.buttonCancel);
         cancelEvent.setOnClickListener(this);
-        tv_startTime = (TextView)myView.findViewById(R.id.eventStartTime);
-        tv_endTime = (TextView)myView.findViewById(R.id.eventEndTime);
         tv_description = (TextView)myView.findViewById(R.id.eventDescription);
-        tv_category = (TextView)myView.findViewById(R.id.eventCategory);
         sp_sessions = (Spinner)myView.findViewById(R.id.spinnerSession);
         sp_sessions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -92,7 +86,6 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         });
         tv_location = (TextView)myView.findViewById(R.id.eventLocation);
         tv_name = (TextView)myView.findViewById(R.id.eventName);
-        tv_org = (TextView)myView.findViewById(R.id.organizedBy);
 
         //return super.onCreateView(inflater, container, savedInstanceState);
 
@@ -180,18 +173,14 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         this.tv_category.setText(jObj.getString("event_category"));
         this.tv_description.setText(jObj.getString("event_desc"));
         this.tv_name.setText(jObj.getString("event_name"));
-        this.tv_endTime.setText(jObj.getString("event_endDate"));
         this.tv_location.setText(jObj.getString("event_location"));
-        this.tv_startTime.setText(jObj.getString("event_startDate"));
 
         ArrayList<String> sessionList = new ArrayList();
         JSONArray sessions = jObj.getJSONArray("sessions");
         for(int i =0; i<sessions.length(); i++){
             JSONObject session = sessions.getJSONObject(i);
             String date = session.getString("event_date");
-            String startTime = session.getString("event_startTime");
-            String endTime = session.getString("event_endTime");
-            sessionList.add(date + " " + startTime+"-"+endTime);
+            sessionList.add(date);
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, sessionList);
         sp_sessions.setAdapter(adapter);
