@@ -124,6 +124,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
 
     private void getEventDetails(final int eventID, final String uid){
         final Context context = this.getActivity();
+
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.URL_EVENTS, new Response.Listener<String>() {
 
@@ -151,7 +152,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("Test", "Login Error: " + error.getMessage());
+                Log.e("Test", "Service Error: " + error.toString());
             }
         }) {
             @Override
@@ -170,7 +171,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
 
     private void fillInformationToUI() throws JSONException {
         final Context context = this.getActivity();
-        this.tv_category.setText(jObj.getString("event_category"));
+        //this.tv_category.setText(jObj.getString("event_category"));
         this.tv_description.setText(jObj.getString("event_desc"));
         this.tv_name.setText(jObj.getString("event_name"));
         this.tv_location.setText(jObj.getString("event_location"));
