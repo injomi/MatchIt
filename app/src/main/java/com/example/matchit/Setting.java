@@ -17,7 +17,7 @@ public class Setting extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.setting, container, false);
+        myView = inflater.inflate(R.layout.individualsetting, container, false);
 
         //return super.onCreateView(inflater, container, savedInstanceState);
         return myView;

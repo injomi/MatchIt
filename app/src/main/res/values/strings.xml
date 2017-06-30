@@ -29,9 +29,13 @@
     <string name="card_view_event_name">Event Name</string>
     //Settings
     <string name="account_name">Name</string>
-    <string name="account_contactnumber">Contact Number</string>
+    <string name="account_contactnumber">Contact Number</string>\
+    <string name="account_address">Address</string>
+    <string name="account_postalcode">Postal Code</string>
     <string name="account_password">Password</string>
     <string name="account_confirmpassword">Confirm Password</string>
+    <string name="org_name">Organization Name</string>
+    <string name="org_uen">UEN Number</string>
     <string name="update">Update</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

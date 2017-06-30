@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/accountSettings"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="20dip"
+        android:text="ACCOUNT SETTINGS"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/accountSettings"
+        android:background="@color/input_login" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:paddingTop="15dp"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:paddingBottom="5dp"
+            android:text="Account Name: "
+            android:textColor="@color/colorBlack"/>
+
+        <EditText
+            android:id="@+id/accountName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:hint="@string/account_name"
+            android:inputType="text"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="Contact Number: "
+            android:textColor="@color/colorBlack"/>
+
+        <EditText
+            android:id="@+id/accountContactNumber"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:hint="@string/account_contactnumber"
+            android:inputType="number"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="Address: "
+            android:textColor="@color/colorBlack"/>
+
+        <EditText
+            android:id="@+id/accountAddress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:hint="@string/account_address"
+            android:inputType="text"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="Postal Code: "
+            android:textColor="@color/colorBlack"/>
+
+        <EditText
+            android:id="@+id/accountPostalCode"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:hint="@string/account_postalcode"
+            android:inputType="number"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <TextView
+            android:id="@+id/languageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/languagespoken"
+            android:textColor="@color/colorBlack"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/checkBoxEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight="55dp"
+                android:tag="English"
+                android:text="English"
+                android:textColor="@color/colorBlack"
+                />
+
+            <CheckBox
+                android:id="@+id/checkBoxEnglishWritten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:tag="English"
+                android:text="English"
+                android:textColor="@color/colorBlack"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/checkBoxMandarin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mandarin"
+                android:textColor="@color/colorBlack"
+                android:tag="Mandarin"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight = "40dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBoxMandarinWritten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mandarin"
+                android:textColor="@color/colorBlack"
+                android:tag="Mandarin"
+                android:onClick="onCheckboxClicked"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/checkBoxMalay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Malay"
+                android:textColor="@color/colorBlack"
+                android:tag="Malay"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight = "61dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBoxMalayWritten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Malay"
+                android:textColor="@color/colorBlack"
+                android:tag="Malay"
+                android:onClick="onCheckboxClicked"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/checkBoxTamil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tamil"
+                android:textColor="@color/colorBlack"
+                android:tag="Tamil"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight = "64dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBoxTamilWritten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tamil"
+                android:textColor="@color/colorBlack"
+                android:tag="Tamil"
+                android:onClick="onCheckboxClicked"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/checkBoxOthers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Others"
+                android:textColor="@color/colorBlack"
+                android:tag="Others"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight = "57dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBoxOthersWritten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Others"
+                android:textColor="@color/colorBlack"
+                android:tag="Others"
+                android:onClick="onCheckboxClicked"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="Enter Password:"
+            android:textColor="@color/colorBlack"
+            android:paddingTop="20dp"/>
+
+        <EditText
+            android:id="@+id/accountPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/account_password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="Please Enter Password Again: "
+            android:textColor="@color/colorBlack"/>
+
+        <EditText
+            android:id="@+id/accountCfmPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:hint="@string/account_confirmpassword"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:background="#000000"
+            android:text="@string/update"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

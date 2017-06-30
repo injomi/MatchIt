@@ -43,7 +43,6 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
     Button regEvent;
     Button cancelEvent;
     TextView tv_description;
-    TextView tv_category;
     TextView tv_name;
     TextView tv_location;
     Spinner sp_sessions;

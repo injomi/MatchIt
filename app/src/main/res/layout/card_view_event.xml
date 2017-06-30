@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/cv"
-    card_view:cardElevation="5dp"
-    card_view:cardUseCompatPadding="true"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    >
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:background="@drawable/background">
+
         <ImageView
+            android:id="@+id/image_card"
             android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:id="@+id/image_card"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src = "@drawable/spd"
-            />
+            android:src="@drawable/spd" />
+
         <LinearLayout
+            android:id="@+id/labels"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="30dp"
-            android:id="@+id/labels"
-            android:orientation="vertical"
             android:layout_toRightOf="@id/image_card"
-            android:weightSum="1"
-            >
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <TextView
                 android:id="@+id/event_name"
@@ -51,22 +49,41 @@
                 android:layout_marginStart="14dp"
                 android:text="Description"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/event_sd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
-                android:text="Start Date"
-                android:paddingBottom="7dp"/>
+                android:paddingBottom="7dp"
+                android:text="Start Date" />
 
-            <ProgressBar
-                android:id="@+id/event_pb"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="150dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:progressDrawable="@drawable/custom_progress_bar" />
-        </LinearLayout>
+                android:gravity="center"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/progressicon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:src="@drawable/progressicon" />
+
+                <ProgressBar
+                    android:id="@+id/event_pb"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/progressicon"
+                    android:layout_alignBottom="@id/progressicon"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/progressicon"
+                    android:progressDrawable="@drawable/custom_progress_bar" />
+            </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
