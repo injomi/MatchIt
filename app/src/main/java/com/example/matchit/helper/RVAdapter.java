@@ -85,7 +85,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {
             startDate = event.getStartDate();
             int max = 0;
             int count = 0;
-            for(Session s : event.getSessions()){
+            for(Session s : event.getSessions().values()){
                 max += s.getVolunteerMax();
                 count += s.getVolunteerNo();
             }

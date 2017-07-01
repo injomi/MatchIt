@@ -7,25 +7,42 @@ package com.example.matchit.model;
 public class Session {
 
     String date;
-    String time;
     int volunteerMax;
     int volunteerNo;
     int sessionID;
+    String startTime;
+    String endTime;
 
     public Session(){
         date = "";
-        time = "";
         volunteerMax = 0;
         volunteerNo = 0;
         sessionID = 0;
+        startTime = "";
+        endTime = "";
     }
 
-    public Session(String d, String t, int vm, int vn, int id){
+    public Session(String d, int vm, int vn, int id){
         date = d;
-        time = t;
         volunteerNo = vn;
         volunteerMax = vm;
         sessionID = id;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getDate() {
@@ -34,14 +51,6 @@ public class Session {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public int getVolunteerMax() {

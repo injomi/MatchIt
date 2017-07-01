@@ -1,6 +1,7 @@
 package com.example.matchit.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Ajimal on 6/11/2017.
@@ -14,12 +15,12 @@ public class Event {
     String hostName;
     String location;
     String name;
-    ArrayList<Session> sessions;
+    HashMap<String,Session> sessions;
     String description;
 
     public Event(){
         name = "";
-        sessions = new ArrayList<>();
+        sessions = new HashMap<>();
         eventID = 0;
         category = "";
         endDate = "";
@@ -36,16 +37,16 @@ public class Event {
         this.name = name;
     }
 
-    public ArrayList<Session> getSessions() {
+    public HashMap<String,Session> getSessions() {
         return sessions;
     }
 
-    public void setSessions(ArrayList<Session> sessions) {
+    public void setSessions(HashMap<String,Session> sessions) {
         this.sessions = sessions;
     }
 
     public void addSession(Session session){
-        this.sessions.add(session);
+        this.sessions.put(String.valueOf(session.getSessionID()),session);
     }
     public int getEventID() {
         return eventID;

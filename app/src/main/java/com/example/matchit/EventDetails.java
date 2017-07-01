@@ -22,6 +22,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.matchit.app.AppConfig;
 import com.example.matchit.app.AppController;
+import com.example.matchit.helper.RVAdapter;
+import com.example.matchit.model.Event;
+import com.example.matchit.model.Session;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,14 +54,16 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
     TextView tv_name;
     TextView tv_location;
     Spinner sp_sessions;
-
     JSONObject jObj;
+    int eventID;
+    String UID;
+    DatabaseReference db;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.event_details, container, false);
-
+        db = FirebaseDatabase.getInstance().getReference();
         btnViewCompanyInfo = (Button) myView.findViewById(R.id.viewOrganizationInfo);
         btnViewCompanyInfo.setOnClickListener(this);
         regEvent = (Button) myView.findViewById(R.id.buttonReg);
@@ -67,12 +77,10 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
                     if(jObj.getJSONArray("sessions").getJSONObject(i).getString("status").equals("registered")){
-                        cancelEvent.setVisibility(View.GONE);
-                        regEvent.setVisibility(View.VISIBLE);
+                        swapButtons("unregister");
                     }
                     else{
-                        cancelEvent.setVisibility(View.VISIBLE);
-                        regEvent.setVisibility(View.GONE);
+                        swapButtons("register");
                     }
                 } catch (JSONException e) {
                     Log.i("Test",e.toString());
@@ -90,11 +98,11 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            int eventID = bundle.getInt(EVENT_ID_KEY, 0);
+            eventID = bundle.getInt(EVENT_ID_KEY, 0);
             Log.i("Test","fragment argument of eventID -> " + eventID);
-            String uid = ((HomeScreen)this.getActivity()).user.get("uid");
+            UID = ((HomeScreen)this.getActivity()).user.get("uid");
             //Log.i("Test","fragment argument of eventID -> " + eventID + ", UID -> " + uid + "//");
-            getEventDetails(eventID,uid);
+            queryEventService("getDetails",eventID,UID,0);
         }
         return myView;
     }
@@ -113,7 +121,13 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
                         .commit();
                 break;
             case R.id.buttonReg:
-                Log.i("Test","Register");
+                //queryEventService("register",eventID);
+                try {
+                    Log.i("Test","Register");
+                    registerButtonHandler();
+                } catch (JSONException e) {
+                    Log.i("Test", "JSON error" + e.toString());
+                }
                 break;
             case R.id.buttonCancel:
                 Log.i("Test","Cancel");
@@ -121,7 +135,20 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         }
     }
 
-    private void getEventDetails(final int eventID, final String uid){
+    private void registerButtonHandler() throws JSONException {
+
+        int sessionID = jObj.getJSONArray("sessions").getJSONObject(
+                sp_sessions.getSelectedItemPosition()).getInt("SID");
+        queryEventService("register",eventID,UID,sessionID);
+    }
+
+    private void unregisterButtonHandler() throws JSONException {
+        int sessionID = jObj.getJSONArray("sessions").getJSONObject(
+                sp_sessions.getSelectedItemPosition()).getInt("SID");
+        //TODO: add dialog box
+        queryEventService("unregister",eventID,UID,sessionID);
+    }
+    private void queryEventService(final String queryType, final int eventID, final String uid, final int sessionID){
         final Context context = this.getActivity();
 
         StringRequest strReq = new StringRequest(Request.Method.POST,
@@ -131,15 +158,71 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
             public void onResponse(String response) {
                 Log.d("Test", "Service Response: " + response.toString());
                 try {
-                    jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
+                    final JSONObject jRes = new JSONObject(response);
+                    boolean error = jRes.getBoolean("error");
 
                     // Check for error node in json
                     if (!error) {
                         //success
-                        fillInformationToUI();
-                    } else {
-                        Toast.makeText(context, "Event not found", Toast.LENGTH_LONG).show();
+                        if(queryType.equals("getDetails")) {
+                            jObj = new JSONObject(response);
+                            fillInformationToUI();
+                        }
+                        else if(queryType.equals("register")) {
+                            //update firebase and json
+                            if(jRes.getString("status").equals("registered")){
+                                //registered.
+                                db.child("/events/" + eventID + "/sessions/" +sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        // This method is called once with the initial value and again
+                                        // whenever data at this location is updated.
+                                        try {
+                                            Session session = dataSnapshot.getValue(Session.class);
+                                            session.setVolunteerNo(jRes.getInt("count"));
+                                            db.child("/events/" + eventID + "/sessions/" +sessionID).setValue(session);
+                                        } catch (JSONException e) {
+                                            Log.i("Test",e.toString());
+                                        }
+                                    }
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+                                        Log.i("Test", "Error: 0xA3");
+                                    }
+                                });
+                                JSONObject tmp = jObj.getJSONArray("sessions").getJSONObject(
+                                        sp_sessions.getSelectedItemPosition());
+                                tmp.put("participation_count",jRes.getInt("count"));
+                                tmp.put("status","registered");
+                                swapButtons("unregister");
+                            }
+                            else if(queryType.equals("waiting")) {
+                                //waiting
+                                //handle waiting (dialog boxes)
+                            }
+                            else{
+                                //unavailable
+                                //handle full (dialog boxes)
+                            }
+                        }
+                        else if(queryType.equals("unregister"))
+                            return; //unregister -> tricky, not only drop table but execute a php script to push notification to all waiting volunteers
+                        else if(queryType.equals("waiting")){
+
+                            //handle waiting query (confirmed/unconfirmed) -> probably copy register
+                        }
+                    } else { //error msges
+                        if(queryType.equals("getDetails"))
+                            Toast.makeText(context, "Event not found", Toast.LENGTH_LONG).show();
+                        else if(queryType.equals("register")) {
+
+                            return; //register
+                        }
+                        else if(queryType.equals("unregister"))
+                            return; //unregister
+                        else if(queryType.equals("waiting")){
+                            return;
+                        }
                     }
                 } catch (JSONException e) {
                     // JSON error
@@ -160,6 +243,10 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("eventID", String.valueOf(eventID));
                 params.put("uniqueID", uid);
+                params.put("queryType", queryType);
+                if(sessionID != 0){
+                    params.put("sessionID", String.valueOf(sessionID));
+                }
                 return params;
             }
         };
@@ -184,5 +271,20 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, sessionList);
         sp_sessions.setAdapter(adapter);
+    }
+
+    private void swapButtons(String action){
+        switch(action){
+            case "register":
+                cancelEvent.setVisibility(View.GONE);
+                regEvent.setVisibility(View.VISIBLE);
+                break;
+            case "unregister":
+                cancelEvent.setVisibility(View.VISIBLE);
+                regEvent.setVisibility(View.GONE);
+                break;
+            default:
+                Log.i("Test","Error: Should not reach here: A3xA2");
+        }
     }
 }
