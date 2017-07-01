@@ -80,7 +80,18 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
-                    swapButtons(jObj.getJSONArray("sessions").getJSONObject(i).getString("status"));
+                    String status = jObj.getJSONArray("sessions").getJSONObject(i).getString("status");
+                    swapButtons(status);
+                    int max = jObj.getJSONArray("sessions").getJSONObject(i).getInt("max_participation");
+                    int count = jObj.getJSONArray("sessions").getJSONObject(i).getInt("participation_count");
+                    Log.i("Test","max->" + max + ", count->" + count);
+
+                    if(status.equals("waiting")) {
+                        if ((max - count) > 0) {
+                            createRegisterDialog();
+                        }
+                    }
+
                 } catch (JSONException e) {
                     Log.i("Test",e.toString());
                 }
@@ -276,6 +287,10 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
                 cancelEvent.setVisibility(View.GONE);
                 regEvent.setVisibility(View.VISIBLE);
                 break;
+            case "waiting":
+                cancelEvent.setVisibility(View.VISIBLE);
+                regEvent.setVisibility(View.GONE);
+                break;
             default:
                 Log.i("Test","Error: Should not reach here: A3xA2");
         }
@@ -329,6 +344,39 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         });
         builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void createRegisterDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Confirm Participation");
+        builder.setMessage("Good news! We have a slot available!\n" +
+                "Do you want to confirm participation to this session?");
+        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                try {
+                    int sessionID = jObj.getJSONArray("sessions").getJSONObject(
+                            sp_sessions.getSelectedItemPosition()).getInt("SID");
+                    queryEventService("register",eventID,UID,sessionID);
+                } catch (JSONException e) {
+                    Log.i("Test", "JSON error" + e.toString());
+                }
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                try {
+                    int sessionID = jObj.getJSONArray("sessions").getJSONObject(
+                            sp_sessions.getSelectedItemPosition()).getInt("SID");
+                    queryEventService("unregister",eventID,UID,sessionID);
+                } catch (JSONException e) {
+                    Log.i("Test", "JSON error" + e.toString());
+                }
                 dialog.dismiss();
             }
         });
