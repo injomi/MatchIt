@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.matchit.activity.LoginActivity;
 import com.example.matchit.helper.SQLiteHandler;
 import com.example.matchit.helper.SessionManager;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
@@ -35,6 +36,7 @@ public class HomeScreen extends AppCompatActivity
         setContentView(R.layout.activity_home_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        FirebaseMessaging.getInstance().subscribeToTopic("test");
 
         //This is the message button at the bottom right corner
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
