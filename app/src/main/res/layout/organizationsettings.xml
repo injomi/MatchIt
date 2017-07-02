@@ -5,6 +5,7 @@
     android:gravity="top"
     android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/accountSettings"
         android:layout_width="fill_parent"
@@ -15,7 +16,9 @@
         android:padding="20dip"
         android:text="ACCOUNT SETTINGS"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/settingimage"/>
+
 
     <View
         android:id="@+id/view"
@@ -28,7 +31,7 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true" >
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -39,14 +42,16 @@
             android:paddingRight="20dp">
 
             <TextView
-                android:paddingTop="15dp"
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView"
                 android:paddingBottom="5dp"
+                android:paddingTop="50dp"
                 android:text="Account Name: "
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                />
 
             <EditText
                 android:id="@+id/accountName"
@@ -67,7 +72,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
                 android:text="Contact Number: "
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/accountContactNumber"
@@ -88,7 +94,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
                 android:text="Organization Name: "
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/orgName"
@@ -109,7 +116,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
                 android:text="UEN Number: "
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/orgUEN"
@@ -124,15 +132,25 @@
                 android:textColor="@color/input_login"
                 android:textColorHint="@color/input_login_hint" />
 
+            <View
+                android:id="@+id/view2"
+                android:layout_width="600dp"
+                android:layout_height="2dp"
+                android:layout_below="@+id/orgUEN"
+                android:background="@color/colorBlack"
+
+                />
+
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
+                android:paddingTop="20dp"
                 android:text="Enter Password:"
                 android:textColor="@color/colorBlack"
-                android:paddingTop="20dp"/>
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/accountPassword"
@@ -153,7 +171,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
                 android:text="Please Enter Password Again: "
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/accountCfmPassword"

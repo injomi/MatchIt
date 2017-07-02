@@ -38,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
+                android:paddingTop="10dp"
                 android:text="Event"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -46,9 +47,13 @@
                 android:id="@+id/event_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
                 android:layout_marginStart="14dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingTop="7dp"
                 android:text="Description"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/event_sd"
@@ -56,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:paddingBottom="7dp"
+                android:paddingTop="7dp"
                 android:text="Start Date" />
 
             <LinearLayout
@@ -69,6 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
+                    android:paddingBottom="7dp"
                     android:src="@drawable/progressicon" />
 
                 <ProgressBar
@@ -78,9 +85,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/progressicon"
                     android:layout_alignBottom="@id/progressicon"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/progressicon"
+                    android:paddingBottom="7dp"
                     android:progressDrawable="@drawable/custom_progress_bar" />
             </LinearLayout>
         </LinearLayout>

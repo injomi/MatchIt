@@ -24,183 +24,133 @@
         android:background="@color/input_login" />
 
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        //Organization Name
-
-        <TextView
-            android:id="@+id/txtView4"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:paddingBottom="20dp"
-            android:text="Organization Name :"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
-        <TextView
-            android:id="@+id/textOrgName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="15px"
-            android:paddingTop="15px"
-            android:text="test"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView"
+                android:drawableLeft="@drawable/organization"
+                android:drawablePadding="7dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="Organization Name: "
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textOrgName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" />
 
-    //Organization Address
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textOrgName"
+                android:drawableLeft="@drawable/address"
+                android:drawablePadding="7dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="Organization Address: "
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textAddress"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" />
 
-        <TextView
-            android:id="@+id/txtView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:paddingBottom="20dp"
-            android:text="Address :"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textAddress"
+                android:drawableLeft="@drawable/contact"
+                android:drawablePadding="7dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="Organization Contact Number: "
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="15px"
-            android:text="test"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp" />
+            <TextView
+                android:id="@+id/textContactNumber"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textContactNumber"
+                android:drawableLeft="@drawable/whowehelp"
+                android:drawablePadding="7dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="Who We Help?: "
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
-    //Organization Contact Number
+            <TextView
+                android:id="@+id/textWhoTheyHelp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textWhoTheyHelp"
+                android:drawableLeft="@drawable/howwehelp"
+                android:drawablePadding="7dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="How We Help?: "
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/txtView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:paddingBottom="20dp"
-            android:text="Organization Contact Number:"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textHowTheyHelp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" />
 
-        <TextView
-            android:id="@+id/textContactNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="15px"
-            android:text="test"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textHowTheyHelp"
+                android:drawableLeft="@drawable/howyoucanhelp"
+                android:drawablePadding="7dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="15dp"
+                android:text="How You Can Help?: "
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
-    </LinearLayout>
-
-    //Who They Help
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/txtView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:paddingBottom="20dp"
-            android:text="Who They Help :"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textWhoTheyHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="15px"
-            android:text="test"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp" />
-
-    </LinearLayout>
-
-    //How They Help
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/txtView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtView1"
-            android:layout_marginStart="14dp"
-            android:paddingBottom="20dp"
-            android:text="How They Help :"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textHowTheyHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textWhoTheyHelp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:paddingBottom="15px"
-            android:text="test"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp" />
-    </LinearLayout>
-
-    //How Can You Be Involved
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/txtView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtView3"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="14dp"
-            android:paddingBottom="20dp"
-            android:text="How You Can Be Involved:"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textHowYouCanBeInvolved"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textHowTheyHelp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:paddingBottom="15px"
-            android:text="test"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20dp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textHowYouCanBeInvolved"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

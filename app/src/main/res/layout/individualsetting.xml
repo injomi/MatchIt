@@ -15,7 +15,9 @@
         android:padding="20dip"
         android:text="ACCOUNT SETTINGS"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/settingimage"/>
+
 
     <View
         android:id="@+id/view"
@@ -25,49 +27,54 @@
         android:background="@color/input_login" />
 
     <ScrollView
-        android:id="@+id/scrollView1"
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true" >
+        android:fillViewport="true">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-
-        <TextView
-            android:paddingTop="15dp"
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
-            android:paddingBottom="5dp"
-            android:text="Account Name: "
-            android:textColor="@color/colorBlack"/>
-
-        <EditText
-            android:id="@+id/accountName"
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="@color/white"
-            android:hint="@string/account_name"
-            android:inputType="text"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint" />
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
-        <TextView
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView"
+                android:paddingBottom="5dp"
+                android:paddingTop="360dp"
+                android:text="Account Name: "
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                />
+
+            <EditText
+                android:id="@+id/accountName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white"
+                android:hint="@string/account_name"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
+
+
+            <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:text="Contact Number: "
-            android:textColor="@color/colorBlack"/>
+            android:textColor="@color/colorBlack"
+                android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/accountContactNumber"
@@ -88,7 +95,8 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:text="Address: "
-            android:textColor="@color/colorBlack"/>
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/accountAddress"
@@ -109,7 +117,8 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:text="Postal Code: "
-            android:textColor="@color/colorBlack"/>
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/accountPostalCode"
@@ -128,10 +137,11 @@
             android:id="@+id/languageTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:text="@string/languagespoken"
             android:textColor="@color/colorBlack"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"/>
+            android:textSize="16sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -255,6 +265,22 @@
                 android:tag="Others"
                 android:onClick="onCheckboxClicked"/>
         </LinearLayout>
+            <TextView
+                android:id="@+id/textViewSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingTop="5dp"
+                />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="600dp"
+                android:layout_height="2dp"
+                android:layout_below="@+id/checkBoxOthers"
+                android:background="@color/colorBlack"
+
+                />
 
         <TextView
             android:id="@+id/textView4"
@@ -263,7 +289,8 @@
             android:paddingBottom="5dp"
             android:text="Enter Password:"
             android:textColor="@color/colorBlack"
-            android:paddingTop="20dp"/>
+            android:paddingTop="20dp"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/accountPassword"
@@ -284,7 +311,8 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:text="Please Enter Password Again: "
-            android:textColor="@color/colorBlack"/>
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/accountCfmPassword"
