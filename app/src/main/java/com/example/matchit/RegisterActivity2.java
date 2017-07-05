@@ -132,7 +132,42 @@ public class RegisterActivity2 extends Activity {
 //                String languagewritten = txt2.getText().toString();
                 String spoken = TextUtils.join(",",list); //JOEL IS A NOOB
                 String written = TextUtils.join(",",list2); // OMG JOEL IS REALLY A NOOB
-                registerUser(name, email, password, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, spoken, written);
+
+                if (!nationality.isEmpty() && !race.isEmpty() && !specialization.isEmpty() && !occupation.isEmpty() && !spoken.isEmpty() && !written.isEmpty()) {
+                    String nationalityPattern = "[a-zA-Z]+\\.?";
+                    if(!nationality.matches(nationalityPattern))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Nationality can only contain letters", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+
+                    String specializationPattern = "[a-zA-Z]+\\.?";
+                    if(!specialization.matches(specializationPattern))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Specialization can only contain letters", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+
+                    String occupationPattern = "[a-zA-Z]+\\.?";
+                    if(!occupation.matches(occupationPattern))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Occupation can only contain letters", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+
+                    registerUser(name, email, password, nric, org_name, uen, liason_contact, address, postalcode, gender, contactnumber, nationality, race, specialization, occupation, spoken, written);
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter your details!", Toast.LENGTH_LONG)
+                            .show();
+                }
+
 
             }
         });

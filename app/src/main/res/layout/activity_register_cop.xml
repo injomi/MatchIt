@@ -62,7 +62,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/input_register_bg"
             android:hint="UEN Number"
-            android:inputType="number"
+            android:inputType="text"
             android:padding="10dp"
             android:singleLine="true"
             android:textColor="@color/input_register"

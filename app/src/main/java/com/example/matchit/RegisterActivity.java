@@ -76,7 +76,7 @@ public class RegisterActivity extends Activity {
         }
 
         // Register Button Click event
-        if(btnNextPage==null)
+        if (btnNextPage == null)
             Log.i("Test", "btnNextPage is null");
         else
             Log.i("Test", "btnNextPage is not null");
@@ -84,19 +84,26 @@ public class RegisterActivity extends Activity {
             public void onClick(View view) {
 
                 //Get gender value
-                if (inputMale.isChecked()){
+                if (inputMale.isChecked()) {
                     radioValue = "Male";
-                }
-                else
-                {
+                } else {
                     radioValue = "Female";
                 }
                 //Validate form
                 if (!inputFullName.getText().toString().isEmpty() && !inputNric.getText().toString().isEmpty() && !inputAddress.getText().toString().isEmpty() && !inputPostalCode.getText().toString().isEmpty() && !inputContact.getText().toString().isEmpty() && !inputEmail.getText().toString().isEmpty() && !inputPassword.getText().toString().isEmpty()) {
+                    //Validate name
+                    String namePattern = "[a-zA-Z]+\\.?";
+                    if(!inputFullName.getText().toString().matches(namePattern))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Name can only contain letters", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+
                     //Validate nric
                     String nric = inputNric.getText().toString().trim();
-                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}"))
-                    {
+                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}")) {
                         Toast.makeText(getApplicationContext(),
                                 "NRIC not in the right format", Toast.LENGTH_LONG)
                                 .show();
@@ -105,27 +112,34 @@ public class RegisterActivity extends Activity {
                     //Validate email
                     String email = inputEmail.getText().toString().trim();
                     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                    if (!email.matches(emailPattern))
-                    {
+                    if (!email.matches(emailPattern)) {
                         Toast.makeText(getApplicationContext(),
                                 "Email not in the right format", Toast.LENGTH_LONG)
                                 .show();
                         return;
                     }
                 } else {
+                    //Validate name
+                    String namePattern = "[a-zA-Z]+\\.?";
+                    if(!inputFullName.getText().toString().matches(namePattern))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Name can only contain letters", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
                     //Validate nric
                     String nric = inputNric.getText().toString().trim();
-                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}"))
-                    {
+                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}")) {
                         Toast.makeText(getApplicationContext(),
                                 "NRIC not in the right format", Toast.LENGTH_LONG)
                                 .show();
+                        return;
                     }
                     //Validate email
                     String email = inputEmail.getText().toString().trim();
                     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                    if (!email.matches(emailPattern))
-                    {
+                    if (!email.matches(emailPattern)) {
                         Toast.makeText(getApplicationContext(),
                                 "Email not in the right format", Toast.LENGTH_LONG)
                                 .show();

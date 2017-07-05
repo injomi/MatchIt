@@ -104,6 +104,15 @@ public class RegisterActivityCop extends Activity {
 
 
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !nric.isEmpty() && !org_name.isEmpty() && !uen.isEmpty() && !liason_contact.isEmpty()) {
+                    String namePattern = "[a-zA-Z]+\\.?";
+                    if(!name.matches(namePattern))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Name can only contain letters", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+
                     if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}"))
                     {
                         Toast.makeText(getApplicationContext(),
@@ -116,6 +125,15 @@ public class RegisterActivityCop extends Activity {
                     {
                         Toast.makeText(getApplicationContext(),
                                 "Email not in the right format", Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }
+
+                    String orgName = "[a-zA-Z]+\\.?";
+                    if(!name.matches(orgName))
+                    {
+                        Toast.makeText(getApplicationContext(),
+                                "Organization name can only contain letters", Toast.LENGTH_LONG)
                                 .show();
                         return;
                     }
