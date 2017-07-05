@@ -2,6 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
     <TextView
+        android:id="@+id/cipTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:text="CIP Hours: "/>
+    <TextView
+        android:id="@+id/cipHours"
+        android:layout_toRightOf="@id/cipTitle"
+        android:layout_below="@id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"/>
+    <TextView
         android:id="@+id/eventTitle"
         android:text="EVENTS JOINED"
         android:textSize="22sp"

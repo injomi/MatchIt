@@ -36,7 +36,7 @@ public class HomeScreen extends AppCompatActivity
         setContentView(R.layout.activity_home_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FirebaseMessaging.getInstance().subscribeToTopic("test");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("test");
 
         //This is the message button at the bottom right corner
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
