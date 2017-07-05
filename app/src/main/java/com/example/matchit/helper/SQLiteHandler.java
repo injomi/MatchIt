@@ -137,13 +137,48 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put(KEY_LANGSPOKEN, languagespoken); // Created At
         values.put(KEY_LANGWRITTEN, languagewritten); //NRIC
 
-
         // Inserting Row
         long id = db.insert(TABLE_USER, null, values);
         db.close(); // Closing database connection
 
         Log.d(TAG, "New user inserted into sqlite: " + id);
     }
+
+    public void updateUser(JSONObject jObj) {
+        String uid,name,email,address,postalcode,contactnumber,languagespoken,languagewritten;
+        try {
+            uid = jObj.getString("uid");
+            JSONObject user = jObj.getJSONObject("user");
+            name = user.getString("name");
+            email = user.getString("email");
+            address = user.getString("address");
+            postalcode = user.getString("postalcode");
+            contactnumber = user.getString("contactnumber");
+            languagespoken = user.getString("languagespoken");
+            languagewritten = user.getString("languagewritten");
+        }catch(JSONException e){
+            Log.i("Test",e.toString());
+            return;
+        }
+        SQLiteDatabase db = this.getWritableDatabase();
+        Log.i("Test", "Add name: " + name + ", Add email: " + email);
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, name); // Name
+        values.put(KEY_EMAIL, email); // Email
+        values.put(KEY_UID, uid);
+        values.put(KEY_ADDRESS, address);
+        values.put(KEY_POSTALCODE, postalcode); // Created At
+        values.put(KEY_CONTACTNUMBER, contactnumber); //Org name
+        values.put(KEY_LANGSPOKEN, languagespoken); // Created At
+        values.put(KEY_LANGWRITTEN, languagewritten); //NRIC
+
+        // Inserting Row
+        long id = db.update(TABLE_USER, values, KEY_UID +"="+uid, null);
+        db.close(); // Closing database connection
+
+        Log.d(TAG, "New user inserted into sqlite: " + id);
+    }
+
 
     /**
      * Getting user data from database

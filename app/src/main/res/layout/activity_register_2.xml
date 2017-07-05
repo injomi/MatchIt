@@ -20,8 +20,7 @@
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/nationality"
@@ -32,19 +31,19 @@
             android:hint="@string/hint_nationality"
             android:inputType="textCapWords"
             android:padding="10dp"
+            android:required="true"
             android:singleLine="true"
             android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint"
-            android:required= "true"/>
+            android:textColorHint="@color/input_register_hint" />
 
         <TextView
             android:id="@+id/textViewRace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="11dp"
             android:text="Race/Religion"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:paddingBottom="11dp"/>
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -52,14 +51,13 @@
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
             android:entries="@array/array_name"
-            android:textSize="30sp"
-            android:required= "true"
             android:paddingBottom="11dp"
-            />
+            android:required="true"
+            android:textSize="30sp" />
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/specialized"
@@ -70,11 +68,10 @@
             android:hint="Specialized Area"
             android:inputType="text"
             android:padding="10dp"
+            android:required="true"
             android:singleLine="true"
             android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint"
-            android:required= "true"
-            />
+            android:textColorHint="@color/input_register_hint" />
 
         <EditText
             android:id="@+id/occupation"
@@ -85,10 +82,10 @@
             android:hint="Occupation"
             android:inputType="text"
             android:padding="10dp"
+            android:required="true"
             android:singleLine="true"
             android:textColor="@color/input_register"
-            android:textColorHint="@color/input_register_hint"
-            android:required= "true"/>
+            android:textColorHint="@color/input_register_hint" />
 
 
         <!-- CheckBox -->
@@ -124,8 +121,7 @@
                 android:tag="English"
                 android:text="English"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -137,22 +133,22 @@
                 android:id="@+id/checkBoxMandarin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight="34dp"
+                android:tag="Mandarin"
                 android:text="Mandarin"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:tag="Mandarin"
-                android:onClick="onCheckboxClicked"
-                android:paddingRight = "34dp"/>
+                android:textSize="16sp" />
 
             <CheckBox
                 android:id="@+id/checkBoxMandarinWritten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:tag="Mandarin"
                 android:text="Mandarin"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:tag="Mandarin"
-                android:onClick="onCheckboxClicked"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -163,22 +159,22 @@
                 android:id="@+id/checkBoxMalay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight="57dp"
+                android:tag="Malay"
                 android:text="Malay"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:tag="Malay"
-                android:onClick="onCheckboxClicked"
-                android:paddingRight = "57dp"/>
+                android:textSize="16sp" />
 
             <CheckBox
                 android:id="@+id/checkBoxMalayWritten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:tag="Malay"
                 android:text="Malay"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:tag="Malay"
-                android:onClick="onCheckboxClicked"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -189,22 +185,22 @@
                 android:id="@+id/checkBoxTamil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight="61dp"
+                android:tag="Tamil"
                 android:text="Tamil"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:tag="Tamil"
-                android:onClick="onCheckboxClicked"
-                android:paddingRight = "61dp"/>
+                android:textSize="16sp" />
 
             <CheckBox
                 android:id="@+id/checkBoxTamilWritten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:tag="Tamil"
                 android:text="Tamil"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:tag="Tamil"
-                android:onClick="onCheckboxClicked"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -215,22 +211,22 @@
                 android:id="@+id/checkBoxOthers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:paddingRight="53dp"
+                android:tag="Others"
                 android:text="Others"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:tag="Others"
-                android:onClick="onCheckboxClicked"
-                android:paddingRight = "53dp"/>
+                android:textSize="16sp" />
 
             <CheckBox
                 android:id="@+id/checkBoxOthersWritten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"
+                android:tag="Others"
                 android:text="Others"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:tag="Others"
-                android:onClick="onCheckboxClicked"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <Button
@@ -243,22 +239,23 @@
             android:textColor="@color/white" />
 
         <!-- Link to Login Screen -->
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-        <Button
-            android:id="@+id/btnLinkToLoginScreen"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:background="@null"
-            android:text="@string/btn_link_to_login"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnLinkToLoginScreen"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="top"
+                android:background="@null"
+                android:text="@string/btn_link_to_login"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </RelativeLayout>
     </LinearLayout>
 
 </RelativeLayout>
