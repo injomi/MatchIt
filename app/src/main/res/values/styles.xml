@@ -12,4 +12,19 @@
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    //Spinner
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        ...
+        <item name="spinnerStyle">@style/MySpinner.Dark</item>
+    </style>
+
+    <style name="MySpinner" parent="Base.Widget.AppCompat.Spinner">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="MySpinner.Dark" parent="MySpinner">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
 </resources>

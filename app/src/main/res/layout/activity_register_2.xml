@@ -53,7 +53,8 @@
             android:entries="@array/array_name"
             android:paddingBottom="11dp"
             android:required="true"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:theme="@style/AppTheme.Dark"/>
 
         <TextView
             android:layout_width="match_parent"
