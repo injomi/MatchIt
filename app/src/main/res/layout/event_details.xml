@@ -7,12 +7,7 @@
     android:background="@drawable/background"
     android:orientation="vertical">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbars="none">
+
 
 
         <RelativeLayout
@@ -187,13 +182,15 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginBottom="150dp"
                 android:layout_marginStart="14dp"
-                android:progressDrawable="@drawable/custom_progress_bar" />
+                android:progressDrawable="@drawable/custom_progress_bar"
+                android:visibility="invisible"/>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:layout_alignParentBottom="true">
 
                 <Button
                     android:id="@+id/buttonReg"
@@ -230,7 +227,5 @@
                 the above code is causing a crash for nougats OS-->
             </LinearLayout>
         </RelativeLayout>
-
-    </ScrollView>
 </LinearLayout>
 
