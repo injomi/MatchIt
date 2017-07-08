@@ -31,6 +31,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     // Login table name
     private static final String TABLE_USER = "acc_volunteer";
 
+    private static final String ORG_USER = "org_info";
+
     // Login Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
@@ -210,6 +212,31 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             user.put("occupation", cursor.getString(16));
             user.put("languagespoken", cursor.getString(17));
             user.put("languagewritten", cursor.getString(18));
+        }
+        cursor.close();
+        db.close();
+        // return user
+        Log.d("Test", "Fetching user from Sqlite: " + user.toString());
+
+        return user;
+    }
+
+
+    public HashMap<String, String> getOrgDetails() {
+        HashMap<String, String> user = new HashMap<String, String>();
+        String selectQuery = "SELECT  * FROM " + ORG_USER;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // Move to first row
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0) {
+            user.put("org_name", cursor.getString(1));
+            user.put("org_address", cursor.getString(2));
+            user.put("org_contact", cursor.getString(3));
+            user.put("org_who", cursor.getString(4));
+            user.put("org_how_they", cursor.getString(5));
+            user.put("org_how_you", cursor.getString(6));
         }
         cursor.close();
         db.close();
