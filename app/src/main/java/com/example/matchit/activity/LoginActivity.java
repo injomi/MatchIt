@@ -27,6 +27,7 @@ import com.example.matchit.app.AppConfig;
 import com.example.matchit.app.AppController;
 import com.example.matchit.helper.SQLiteHandler;
 import com.example.matchit.helper.SessionManager;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -139,6 +140,10 @@ public class LoginActivity extends Activity {
 
                         // Inserting row in users table
                         db.addUser(jObj);
+
+                        //subscribe to relevant topics
+                        FirebaseMessaging.getInstance().subscribeToTopic("one");
+                        FirebaseMessaging.getInstance().subscribeToTopic(jObj.getString("uid"));
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,

@@ -8,13 +8,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.matchit.activity.LoginActivity;
+import com.example.matchit.app.barcode.BarcodeCaptureActivity;
 import com.example.matchit.helper.SQLiteHandler;
 import com.example.matchit.helper.SessionManager;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.vision.barcode.Barcode;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
@@ -172,10 +177,27 @@ public class HomeScreen extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_logout) {
             logoutUser(); //Logout
+        } else if (id == R.id.nav_attendance) {
+            Intent intent = new Intent(getApplicationContext(), BarcodeCaptureActivity.class);
+            startActivityForResult(intent, 1);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == CommonStatusCodes.SUCCESS) {
+                if (data != null) {
+                    Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
+                    Toast.makeText(this, barcode.displayValue, Toast.LENGTH_LONG).show();
+                    Log.i("Test",barcode.displayValue);
+                } else Log.i("Test",getResources().getString(R.string.no_barcode_captured));
+            } else Log.e("Test", String.format(getString(R.string.barcode_error_format),
+                    CommonStatusCodes.getStatusCodeString(resultCode)));
+        } else super.onActivityResult(requestCode, resultCode, data);
     }
 }
