@@ -110,7 +110,8 @@
                 android:layout_below="@id/eventLocation"
                 android:layout_marginStart="14dp"
                 android:paddingBottom="20dp"
-                android:text="Event Date: " />
+                android:text="Event Date: "
+                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/eventDate"
@@ -120,7 +121,8 @@
                 android:layout_alignBottom="@id/textView3"
                 android:layout_toEndOf="@id/textView3"
                 android:paddingBottom="20dp"
-                android:text="Text View" />
+                android:text="Text View"
+                android:visibility="invisible"/>
 
             //Event Description
 
@@ -128,10 +130,11 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/eventDate"
+                android:layout_below="@id/eventLocation"
                 android:layout_marginStart="14dp"
                 android:paddingBottom="20dp"
-                android:text="Event Description: " />
+                android:text="Event Description: "
+                />
 
             <TextView
                 android:id="@+id/eventDescription"
@@ -141,7 +144,7 @@
                 android:layout_alignBottom="@id/textView4"
                 android:layout_toEndOf="@id/textView4"
                 android:paddingBottom="20dp"
-                android:text="Text View" />
+                android:text="Text View"/>
 
             //Session
 
@@ -169,21 +172,39 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/spinnerSession"
                 android:layout_marginStart="14dp"
-                android:paddingBottom="30dp"
+                android:paddingBottom="10dp"
                 android:paddingTop="10dp"
-                android:text="Event Capacity:" />
-
-            <ProgressBar
-                android:id="@+id/progressBarCapacity"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="360dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="150dp"
-                android:layout_marginStart="14dp"
-                android:progressDrawable="@drawable/custom_progress_bar"
+                android:text="Event Capacity:"
                 android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_below="@id/spinnerSession"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/progressicon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:paddingBottom="7dp"
+                    android:src="@drawable/progressicon" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarCapacity"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/progressicon"
+                    android:layout_alignBottom="@id/progressicon"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_toEndOf="@id/progressicon"
+                    android:paddingBottom="7dp"
+                    android:progressDrawable="@drawable/custom_progress_bar" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"

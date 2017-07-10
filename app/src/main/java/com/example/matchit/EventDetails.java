@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +58,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
     TextView tv_name;
     TextView tv_location;
     Spinner sp_sessions;
+    ProgressBar progressBar;
     JSONObject jObj;
     int eventID;
     String UID;
@@ -76,6 +78,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         cancelEvent.setOnClickListener(this);
         tv_description = (TextView)myView.findViewById(R.id.eventDescription);
         sp_sessions = (Spinner)myView.findViewById(R.id.spinnerSession);
+        progressBar = (ProgressBar)myView.findViewById(R.id.progressBarCapacity);
         sp_sessions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -85,6 +88,8 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
                     int max = jObj.getJSONArray("sessions").getJSONObject(i).getInt("max_participation");
                     int count = jObj.getJSONArray("sessions").getJSONObject(i).getInt("participation_count");
                     Log.i("Test","max->" + max + ", count->" + count);
+                    progressBar.setMax(max);
+                    progressBar.setProgress(count);
 
                     if(status.equals("waiting")) {
                         if ((max - count) > 0) {

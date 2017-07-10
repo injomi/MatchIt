@@ -155,8 +155,7 @@
                 android:paddingRight="55dp"
                 android:tag="English"
                 android:text="English"
-                android:textColor="@color/colorBlack"
-                />
+                android:textColor="@color/colorBlack"/>
 
             <CheckBox
                 android:id="@+id/checkBoxEnglishWritten"
