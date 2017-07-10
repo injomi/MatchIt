@@ -223,7 +223,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
 
     public HashMap<String, String> getOrgDetails() {
-        HashMap<String, String> user = new HashMap<String, String>();
+        HashMap<String, String> org = new HashMap<String, String>();
         String selectQuery = "SELECT  * FROM " + ORG_USER;
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -231,19 +231,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
-            user.put("org_name", cursor.getString(1));
-            user.put("org_address", cursor.getString(2));
-            user.put("org_contact", cursor.getString(3));
-            user.put("org_who", cursor.getString(4));
-            user.put("org_how_they", cursor.getString(5));
-            user.put("org_how_you", cursor.getString(6));
+            org.put("org_name", cursor.getString(1));
+            org.put("org_address", cursor.getString(2));
+            org.put("org_contact", cursor.getString(3));
+            org.put("org_who", cursor.getString(4));
+            org.put("org_how_they", cursor.getString(5));
+            org.put("org_how_you", cursor.getString(6));
         }
         cursor.close();
         db.close();
         // return user
-        Log.d("Test", "Fetching user from Sqlite: " + user.toString());
+        Log.d("Test", "Fetching user from Sqlite: " + org.toString());
 
-        return user;
+        return org;
     }
 
     /**

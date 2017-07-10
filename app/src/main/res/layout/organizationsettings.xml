@@ -187,15 +187,18 @@
                 android:textColor="@color/input_login"
                 android:textColorHint="@color/input_login_hint" />
 
-
             <Button
                 android:id="@+id/btnUpdate"
+                android:background="@drawable/buttonshape"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dip"
-                android:background="#000000"
                 android:text="@string/update"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:shadowColor="#575757"
+                android:shadowDx="0"
+                android:shadowDy="0"/>
 
         </LinearLayout>
     </ScrollView>

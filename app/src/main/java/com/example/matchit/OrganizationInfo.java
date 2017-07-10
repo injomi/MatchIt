@@ -4,19 +4,27 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.matchit.app.AppConfig;
+import com.example.matchit.app.AppController;
 import com.example.matchit.helper.SQLiteHandler;
 import com.example.matchit.helper.SessionManager;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
-/**
- * Created by josephtyx on 4/6/17.
- */
 
 public class OrganizationInfo extends Fragment {
     private static final String TAG = OrganizationInfo.class.getSimpleName();
@@ -31,7 +39,7 @@ public class OrganizationInfo extends Fragment {
     private ProgressDialog pDialog;
 
     private SQLiteHandler db;
-    public HashMap<String,String> user;
+    public HashMap<String, String> org;
     private SessionManager session;
     View myView;
 
@@ -47,46 +55,75 @@ public class OrganizationInfo extends Fragment {
         orgHow = (TextView) myView.findViewById(R.id.textHowTheyHelp);
         orgYou = (TextView) myView.findViewById(R.id.textHowYouCanBeInvolved);
 
-        pDialog = new ProgressDialog(getActivity());
-        pDialog.setCancelable(false);
-
         // Session manager
         session = new SessionManager(getActivity().getApplicationContext());
 
         // SQLite database handler
         db = new SQLiteHandler(getActivity().getApplicationContext());
 
-        user = db.getOrgDetails();
-
-        String name = user.get("org_name");
-        String address = user.get("org_address");
-        String contact = user.get("org_contact");
-        String who = user.get("org_who");
-        String how = user.get("org_how_they");
-        String howyou = user.get("org_how_you");
-
-
-
-
-        orgName.setText(name);
-        orgAddress.setText(address);
-        orgContact.setText(contact);
-        orgWho.setText(who);
-        orgHow.setText(how);
-        orgYou.setText(howyou);
+        // Check if user is already logged in or not
+        if (session.isLoggedIn()) {
+            getOrgInfo();
+        }
 
         return myView;
     }
 
-    private void showDialog() {
-        if (!pDialog.isShowing())
-            pDialog.show();
+    private void getOrgInfo() {
+        // Tag used to cancel the request
+        String tag_string_req = "org_info";
+
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                AppConfig.URL_ORGINFO, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) { //response
+                Log.d(TAG, "Org Response: " + response.toString());
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        String name = org.get("org_name");
+                        String address = org.get("org_address");
+                        String contact = org.get("org_contact");
+                        String who = org.get("org_who");
+                        String how = org.get("org_how_they");
+                        String howyou = org.get("org_how_you");
+
+                        orgName.setText(name);
+                        orgAddress.setText(address);
+                        orgContact.setText(contact);
+                        orgWho.setText(who);
+                        orgHow.setText(how);
+                        orgYou.setText(howyou);
+
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Display Error! : " + error.getMessage());
+                Toast.makeText(getActivity().getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+        };
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
-
-    private void hideDialog() {
-        if (pDialog.isShowing())
-            pDialog.dismiss();
-    }
-
-
 }

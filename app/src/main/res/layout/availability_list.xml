@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
     <TextView
         android:id="@+id/avail_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:paddingStart="13dp"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="-" />
 
     <TextView
         android:id="@+id/avail_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="20dp"/>
+        android:gravity="center"
+        android:paddingRight="105dp"
+        android:paddingTop="10dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/avail_del"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="delete" />
+        android:background="@null"
+        android:src="@drawable/close" />
 </LinearLayout>

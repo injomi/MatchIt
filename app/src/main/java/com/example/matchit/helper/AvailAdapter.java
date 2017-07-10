@@ -1,21 +1,16 @@
 package com.example.matchit.helper;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.matchit.Availability;
 import com.example.matchit.R;
-import com.example.matchit.model.eventItemModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,7 +53,7 @@ public class AvailAdapter extends BaseAdapter {
     public static class ViewHolder{
         public TextView start;
         public TextView end;
-        public Button delete;
+        public ImageButton delete;
     }
 
     @Override
@@ -69,7 +64,7 @@ public class AvailAdapter extends BaseAdapter {
         rowView = inflater.inflate(R.layout.availability_list,null);
         holder.start = (TextView)rowView.findViewById(R.id.avail_start);
         holder.end = (TextView)rowView.findViewById(R.id.avail_end);
-        holder.delete = (Button)rowView.findViewById(R.id.avail_del);
+        holder.delete = (ImageButton)rowView.findViewById(R.id.avail_del);
         //TODO set textviews of JObj
         try {
             JSONObject obj = data.getJSONObject(position);
