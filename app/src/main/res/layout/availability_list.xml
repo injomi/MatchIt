@@ -11,7 +11,8 @@
         android:layout_marginRight="30dp"
         android:gravity="center"
         android:paddingStart="13dp"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp"
+        android:textColor="@color/colorBlack"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,15 +20,17 @@
         android:layout_marginRight="30dp"
         android:gravity="center"
         android:paddingTop="10dp"
-        android:text="-" />
+        android:text="-"
+        android:textColor="@color/colorBlack"/>
 
     <TextView
         android:id="@+id/avail_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingRight="105dp"
-        android:paddingTop="10dp" />
+        android:paddingRight="100dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/colorBlack"/>
 
     <ImageButton
         android:id="@+id/avail_del"

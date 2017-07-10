@@ -12,11 +12,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="@drawable/cv_background">
+        android:background="#d7dde8">
 
         <ImageView
             android:id="@+id/image_card"
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -28,7 +28,7 @@
             android:id="@+id/labels"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="18dp"
             android:layout_toRightOf="@id/image_card"
             android:orientation="vertical"
             android:weightSum="1">
@@ -37,32 +37,35 @@
                 android:id="@+id/event_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
+                android:layout_marginStart="11dp"
                 android:paddingTop="10dp"
                 android:text="Event"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"/>
 
             <TextView
                 android:id="@+id/event_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="14dp"
-                android:layout_marginStart="13dp"
+                android:layout_marginStart="11dp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:paddingTop="7dp"
                 android:text="Description"
+                android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/event_sd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
+                android:layout_marginStart="11dp"
                 android:paddingBottom="7dp"
                 android:paddingTop="7dp"
-                android:text="Start Date" />
+                android:text="Start Date"
+                android:textColor="@color/colorBlack" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,7 +77,7 @@
                     android:id="@+id/progressicon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
+                    android:layout_marginStart="11dp"
                     android:paddingBottom="7dp"
                     android:src="@drawable/progressicon" />
 
@@ -85,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/progressicon"
                     android:layout_alignBottom="@id/progressicon"
-                    android:layout_marginEnd="7dp"
+                    android:layout_marginEnd="9dp"
                     android:layout_marginStart="7dp"
                     android:layout_toEndOf="@id/progressicon"
                     android:paddingBottom="7dp"

@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/cipTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView2"
-        android:text="CIP Hours: "/>
+        android:layout_marginStart="14dp"
+        android:text="CIP Hours: "
+        android:textColor="@color/colorBlack"
+        android:paddingTop="5dp"/>
+
     <TextView
         android:id="@+id/cipHours"
-        android:layout_toRightOf="@id/cipTitle"
-        android:layout_below="@id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"/>
+        android:layout_below="@id/textView2"
+        android:layout_toRightOf="@id/cipTitle"
+        android:text="0"
+        android:paddingTop="5dp"
+        android:textColor="@color/colorBlack" />
+
     <TextView
         android:id="@+id/eventTitle"
-        android:text="EVENTS JOINED"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:gravity="center"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="20dip"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="20dip"
+        android:text="EVENTS JOINED"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="fill_parent"
         android:layout_height="3dp"
         android:layout_below="@+id/eventTitle"
-        android:background="@color/input_login"
-        android:id="@+id/view" />
+        android:background="@color/input_login" />
 
     <TextView
         android:id="@+id/textView2"
@@ -39,24 +48,59 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/view"
+        android:layout_marginStart="14dp"
+        android:paddingTop="15dp"
         android:text="See the current events you joined!"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cipTitle"
+        android:layout_marginStart="14dp"
+        android:paddingTop="15dp"
+        android:text="Registered Events"
+        android:textColor="@color/colorBlack"
         android:textSize="17sp"
-        android:paddingTop="15px"/>
+        android:textStyle="bold|italic" />
 
     <ListView
+        android:id="@+id/listViewCurrentEvent"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="160dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="26dp"
-        android:id="@+id/listViewCurrentEvent" />
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="14dp"
+        android:textColor="@color/colorBlack"
+        android:background="@drawable/lv_bg"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/listViewCurrentEvent"
+        android:layout_marginStart="14dp"
+        android:paddingTop="15dp"
+        android:text="Past Events"
+        android:textColor="@color/colorBlack"
+        android:textSize="17sp"
+        android:textStyle="bold|italic"
+        />
 
     <ListView
         android:id="@+id/listViewPastEvent"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="160dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/listViewCurrentEvent"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="14dp"
+        android:textColor="@color/colorBlack"
+        android:background="@drawable/lv_bg"/>
 
 </RelativeLayout>
