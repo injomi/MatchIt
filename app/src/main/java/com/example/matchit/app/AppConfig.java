@@ -1,7 +1,7 @@
 package com.example.matchit.app;
 
 public class AppConfig {
-    public static String HOST  =  "192.168.1.11";
+    public static String HOST  =  "192.168.1.107";
     // Server user login url
     public static String URL_LOGIN = "http://" + HOST + "/matchit/login.php";
 
