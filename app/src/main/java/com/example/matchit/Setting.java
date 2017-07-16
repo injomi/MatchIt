@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +25,6 @@ import com.example.matchit.helper.SessionManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,14 +45,14 @@ public class Setting extends Fragment {
     private EditText retypePassword;
     private EditText oldPassword;
 
-    private CheckBox englishSpoken,englishWritten,mandarinSpoken,mandarinWritten,malaySpoken,malayWritten,tamilSpoken,tamilWritten,othersSpoken,othersWritten;
+    private CheckBox englishSpoken, englishWritten, mandarinSpoken, mandarinWritten, malaySpoken, malayWritten, tamilSpoken, tamilWritten, othersSpoken, othersWritten;
     //ArrayList<String> list,list2;
 
 
     private ProgressDialog pDialog;
 
     private SQLiteHandler db;
-    public HashMap<String,String> user;
+    public HashMap<String, String> user;
     private SessionManager session;
     View myView;
 
@@ -68,7 +66,7 @@ public class Setting extends Fragment {
         inputPostalCode = (EditText) myView.findViewById(R.id.accountPostalCode);
         newPassword = (EditText) myView.findViewById(R.id.accountPassword);
         oldPassword = (EditText) myView.findViewById(R.id.oldPassword);
-        retypePassword = (EditText)myView.findViewById(R.id.accountCfmPassword) ;
+        retypePassword = (EditText) myView.findViewById(R.id.accountCfmPassword);
 
         updateProfile = (Button) myView.findViewById(R.id.btnUpdateProfile);
         updatePassword = (Button) myView.findViewById(R.id.btnUpdate);
@@ -109,55 +107,45 @@ public class Setting extends Fragment {
 
         //Lang Spoken
 
-        if (langspoken.contains("English"))
-        {
+        if (langspoken.contains("English")) {
             englishSpoken.setChecked(true);
         }
 
-        if (langspoken.contains("Mandarin"))
-        {
+        if (langspoken.contains("Mandarin")) {
             mandarinSpoken.setChecked(true);
         }
 
-        if (langspoken.contains("Malay"))
-        {
+        if (langspoken.contains("Malay")) {
             malaySpoken.setChecked(true);
         }
 
-        if (langspoken.contains("Tamil"))
-        {
+        if (langspoken.contains("Tamil")) {
             tamilSpoken.setChecked(true);
         }
 
-        if (langspoken.contains("Others"))
-        {
+        if (langspoken.contains("Others")) {
             othersSpoken.setChecked(true);
         }
 
         //Lang Written
 
-        if (langwritten.contains("English"))
-        {
+        if (langwritten.contains("English")) {
             englishWritten.setChecked(true);
         }
 
-        if (langwritten.contains("Mandarin"))
-        {
+        if (langwritten.contains("Mandarin")) {
             mandarinWritten.setChecked(true);
         }
 
-        if (langwritten.contains("Malay"))
-        {
+        if (langwritten.contains("Malay")) {
             malayWritten.setChecked(true);
         }
 
-        if (langwritten.contains("Tamil"))
-        {
+        if (langwritten.contains("Tamil")) {
             tamilWritten.setChecked(true);
         }
 
-        if (langwritten.contains("Others"))
-        {
+        if (langwritten.contains("Others")) {
             othersWritten.setChecked(true);
         }
 
@@ -172,48 +160,42 @@ public class Setting extends Fragment {
                 String uid = user.get("uid");
                 String spoken = "";
                 String written = "";
-                CheckBox[] writtenChks = {englishWritten,mandarinWritten,malayWritten,tamilWritten,othersWritten};
-                CheckBox[] spokenChks = {englishSpoken,mandarinSpoken,malaySpoken,tamilSpoken,othersSpoken};
-                for(int i=0; i<writtenChks.length; i++){
-                    if(writtenChks[i].isChecked())
+                CheckBox[] writtenChks = {englishWritten, mandarinWritten, malayWritten, tamilWritten, othersWritten};
+                CheckBox[] spokenChks = {englishSpoken, mandarinSpoken, malaySpoken, tamilSpoken, othersSpoken};
+                for (int i = 0; i < writtenChks.length; i++) {
+                    if (writtenChks[i].isChecked())
                         written += writtenChks[i].getTag().toString() + ",";
-                    if(spokenChks[i].isChecked())
+                    if (spokenChks[i].isChecked())
                         spoken += spokenChks[i].getTag().toString() + ",";
                 }
-
-//                for (String str : list) {
-//                    txt.setText(txt.getText().toString() + " , " + str);
-//                }
-//                for (String str : list2) {
-//                    txt2.setText(txt2.getText().toString() + " , " + str);
-//                }
-//                String languagespoken = txt.getText().toString();
-//                String languagewritten = txt2.getText().toString();
-//                String spoken = TextUtils.join(",",list); //JOEL IS A NOOB
-//                String written = TextUtils.join(",",list2); // OMG JOEL IS REALLY A NOOB
-                updateUser("profile",uid, newname, newaddress, newpostalcode, newcontact,
-                        spoken.substring(0,spoken.length()-1), written.substring(0,written.length()-1),"","");
+                if (!newname.isEmpty() && !newcontact.isEmpty() && !newaddress.isEmpty() && !newpostalcode.isEmpty() && !spoken.isEmpty() && !written.isEmpty()) {
+                    updateUser("profile", uid, newname, newaddress, newpostalcode, newcontact,
+                            spoken.substring(0, spoken.length() - 1), written.substring(0, written.length() - 1), "", "");
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Please enter your details!", Toast.LENGTH_LONG)
+                            .show();
+                }
 
             }
         });
-
         updatePassword.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String oldPW = oldPassword.getText().toString();
                 String newPW = newPassword.getText().toString();
                 String cfmPW = retypePassword.getText().toString();
-                if(!cfmPW.equals(newPW)){
+                if (!cfmPW.equals(newPW)) {
                     Toast.makeText(getActivity(), "Passwords mismatch", Toast.LENGTH_LONG).show();
                     return;
                 }
-                updateUser("password",user.get("uid"), "", "", "", "", "", "",newPW,oldPW);
+                updateUser("password", user.get("uid"), "", "", "", "", "", "", newPW, oldPW);
             }
         });
         return myView;
     }
 
     private void updateUser(final String queryType, final String uid, final String name,
-                              final String address, final String postalcode, final String contactnumber, final String languagespoken, final String languagewritten, final String newPass, final String oldPass) {
+                            final String address, final String postalcode, final String contactnumber, final String languagespoken, final String languagewritten, final String newPass, final String oldPass) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
 
@@ -269,7 +251,7 @@ public class Setting extends Fragment {
             protected Map<String, String> getParams() { //sending
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
-                if(queryType.equals("profile")) {
+                if (queryType.equals("profile")) {
                     params.put("queryType", queryType);
                     params.put("uid", uid);
                     params.put("name", name);
@@ -278,12 +260,11 @@ public class Setting extends Fragment {
                     params.put("contactnumber", contactnumber);
                     params.put("languagespoken", languagespoken);
                     params.put("languagewritten", languagewritten);
-                }
-                else if(queryType.equals("password")){
-                    params.put("uid",uid);
-                    params.put("oldPw",oldPass);
-                    params.put("newPw",newPass);
-                    params.put("queryType",queryType);
+                } else if (queryType.equals("password")) {
+                    params.put("uid", uid);
+                    params.put("oldPw", oldPass);
+                    params.put("newPw", newPass);
+                    params.put("queryType", queryType);
                 }
                 return params;
             }
