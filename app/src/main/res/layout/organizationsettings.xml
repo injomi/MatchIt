@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView"
                 android:paddingBottom="5dp"
-                android:paddingTop="50dp"
+                android:paddingTop="300dp"
                 android:text="Account Name: "
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp"
@@ -132,6 +132,29 @@
                 android:textColor="@color/input_login"
                 android:textColorHint="@color/input_login_hint" />
 
+            <Button
+                android:id="@+id/btnUpdateProfile"
+                android:background="@drawable/buttonshape"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dip"
+                android:gravity="center"
+                android:shadowColor="#575757"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:textColor="#FFFFFF"
+                android:text="Update Profile"
+                />
+
+            <TextView
+                android:id="@+id/textViewSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingTop="5dp"
+                />
+
             <View
                 android:id="@+id/view2"
                 android:layout_width="600dp"
@@ -141,6 +164,28 @@
 
                 />
 
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:text="Old Password:"
+                android:textColor="@color/colorBlack"
+                android:paddingTop="20dp"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/oldPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:hint="Old Password"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -193,7 +238,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dip"
-                android:text="@string/update"
+                android:text="UPDATE PASSWORD"
                 android:textColor="#FFFFFF"
                 android:gravity="center"
                 android:shadowColor="#575757"
