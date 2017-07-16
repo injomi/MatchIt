@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -63,6 +64,8 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
     int eventID;
     String UID;
     DatabaseReference db;
+    TextView remarks;
+    TextView pax;
 
     @Nullable
     @Override
@@ -78,6 +81,12 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         cancelEvent.setOnClickListener(this);
         tv_description = (TextView)myView.findViewById(R.id.eventDescription);
         sp_sessions = (Spinner)myView.findViewById(R.id.spinnerSession);
+        remarks = (TextView) myView.findViewById(R.id.remarks);
+        pax = (TextView) myView.findViewById(R.id.pax);
+        if(((HomeScreen)this.getActivity()).user.get("org_name").isEmpty()){
+            pax.setVisibility(View.GONE);
+            pax.setText("1");
+        }
         progressBar = (ProgressBar)myView.findViewById(R.id.progressBarCapacity);
         sp_sessions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -116,7 +125,15 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
             eventID = bundle.getInt(EVENT_ID_KEY, 0);
             Log.i("Test","fragment argument of eventID -> " + eventID);
             UID = ((HomeScreen)this.getActivity()).user.get("uid");
-            //Log.i("Test","fragment argument of eventID -> " + eventID + ", UID -> " + uid + "//");
+            Log.i("Test","fragment argument of eventID -> " + eventID + ", UID -> " + UID + "//");
+            queryEventService("getDetails",eventID,UID,0);
+        }
+        else if (getActivity().getIntent().getExtras() != null) {
+            Intent intent = getActivity().getIntent();
+            String EID = intent.getStringExtra("EID");
+            UID = ((HomeScreen)this.getActivity()).user.get("uid");
+            eventID = Integer.parseInt(EID);
+            Log.i("Test","intent argument of eventID -> " + eventID + ", UID -> " + UID + "//");
             queryEventService("getDetails",eventID,UID,0);
         }
         return myView;
@@ -181,7 +198,10 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
 
     private void queryEventService(final String queryType, final int eventID, final String uid, final int sessionID){
         final Context context = this.getActivity();
-
+        if(queryType.equals("register") && !((HomeScreen)this.getActivity()).user.get("uid").isEmpty() && pax.getText().toString().isEmpty()){
+            Toast.makeText(context, "Please enter number of pax", Toast.LENGTH_LONG).show();
+            return;
+        }
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 AppConfig.URL_EVENTS, new Response.Listener<String>() {
 
@@ -235,6 +255,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
                     }
                 } catch (JSONException e) {
                     // JSON error
+
                     Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
@@ -256,6 +277,8 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
                 if(sessionID != 0){
                     params.put("sessionID", String.valueOf(sessionID));
                 }
+                params.put("remarks",remarks.getText().toString());
+                params.put("pax",pax.getText().toString());
                 return params;
             }
         };

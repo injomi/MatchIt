@@ -1,5 +1,6 @@
 package com.example.matchit.helper;
 
+import android.app.Activity;
 import android.os.Build;
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -63,9 +64,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {
     }
 
     List<Event> events;
+    List<Event> eventsCopy;
+    Activity activity;
 
-    public RVAdapter(List<Event> events){
+    public RVAdapter(List<Event> events, Activity a){
         this.events = events;
+        eventsCopy = new ArrayList(events);
+        activity = a;
     }
 
     @Override
@@ -110,6 +115,33 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    public void filter(String text) {
+        events.clear();
+        if(text.isEmpty()){
+            events.addAll(eventsCopy);
+        } else{
+            text = text.toLowerCase();
+            for(Event item: eventsCopy){
+                if(item.getName().toLowerCase().contains(text) || item.getCategory().toLowerCase().contains(text) ||
+                        item.getDescription().toLowerCase().contains(text)||item.getHostName().toLowerCase().contains(text)
+                        ||item.getLocation().toLowerCase().contains(text) || item.getStartDate().toLowerCase().contains(text)
+                        || item.getEndDate().toLowerCase().contains(text)){
+                    events.add(item);
+                }
+            }
+        }
+        try {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    RVAdapter.this.notifyDataSetChanged();
+                }
+            });
+        }catch(NullPointerException e){
+            Log.i("Test","ignorable error");
+        }
     }
 
 }

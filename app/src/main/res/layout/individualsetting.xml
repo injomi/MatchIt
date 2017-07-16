@@ -151,7 +151,7 @@
                 android:id="@+id/checkBoxEnglish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onCheckboxClicked"
+
                 android:paddingRight="55dp"
                 android:tag="English"
                 android:text="English"
@@ -161,7 +161,7 @@
                 android:id="@+id/checkBoxEnglishWritten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onCheckboxClicked"
+
                 android:tag="English"
                 android:text="English"
                 android:textColor="@color/colorBlack"
@@ -180,7 +180,7 @@
                 android:text="Mandarin"
                 android:textColor="@color/colorBlack"
                 android:tag="Mandarin"
-                android:onClick="onCheckboxClicked"
+
                 android:paddingRight = "40dp"/>
 
             <CheckBox
@@ -190,7 +190,7 @@
                 android:text="Mandarin"
                 android:textColor="@color/colorBlack"
                 android:tag="Mandarin"
-                android:onClick="onCheckboxClicked"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -204,7 +204,7 @@
                 android:text="Malay"
                 android:textColor="@color/colorBlack"
                 android:tag="Malay"
-                android:onClick="onCheckboxClicked"
+
                 android:paddingRight = "61dp"/>
 
             <CheckBox
@@ -214,7 +214,7 @@
                 android:text="Malay"
                 android:textColor="@color/colorBlack"
                 android:tag="Malay"
-                android:onClick="onCheckboxClicked"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -228,7 +228,7 @@
                 android:text="Tamil"
                 android:textColor="@color/colorBlack"
                 android:tag="Tamil"
-                android:onClick="onCheckboxClicked"
+
                 android:paddingRight = "64dp"/>
 
             <CheckBox
@@ -238,7 +238,7 @@
                 android:text="Tamil"
                 android:textColor="@color/colorBlack"
                 android:tag="Tamil"
-                android:onClick="onCheckboxClicked"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -252,7 +252,7 @@
                 android:text="Others"
                 android:textColor="@color/colorBlack"
                 android:tag="Others"
-                android:onClick="onCheckboxClicked"
+
                 android:paddingRight = "57dp"/>
 
             <CheckBox
@@ -262,8 +262,22 @@
                 android:text="Others"
                 android:textColor="@color/colorBlack"
                 android:tag="Others"
-                android:onClick="onCheckboxClicked"/>
+                />
         </LinearLayout>
+            <Button
+                android:id="@+id/btnUpdateProfile"
+                android:background="@drawable/buttonshape"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dip"
+                android:gravity="center"
+                android:shadowColor="#575757"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:textColor="#FFFFFF"
+                android:text="Update Profile"
+                />
             <TextView
                 android:id="@+id/textViewSpace"
                 android:layout_width="wrap_content"
@@ -280,6 +294,28 @@
                 android:background="@color/colorBlack"
 
                 />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:text="Old Password:"
+                android:textColor="@color/colorBlack"
+                android:paddingTop="20dp"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/oldPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:hint="Old Password"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textColor="@color/input_login"
+                android:textColorHint="@color/input_login_hint" />
 
         <TextView
             android:id="@+id/textView4"
@@ -338,7 +374,7 @@
             android:shadowDy="0"
             android:shadowRadius="5"
             android:textColor="#FFFFFF"
-            android:text="@string/update"
+            android:text="Update Password"
             />
 
     </LinearLayout>

@@ -149,15 +149,14 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void updateUser(JSONObject jObj) {
         String uid,name,email,address,postalcode,contactnumber,languagespoken,languagewritten;
         try {
-            uid = jObj.getString("uid");
-            JSONObject user = jObj.getJSONObject("user");
-            name = user.getString("name");
-            email = user.getString("email");
-            address = user.getString("address");
-            postalcode = user.getString("postalcode");
-            contactnumber = user.getString("contactnumber");
-            languagespoken = user.getString("languagespoken");
-            languagewritten = user.getString("languagewritten");
+            uid = jObj.getString("unique_id");
+            name = jObj.getString("name");
+            email = jObj.getString("email");
+            address = jObj.getString("address");
+            postalcode = jObj.getString("postalcode");
+            contactnumber = jObj.getString("contactnumber");
+            languagespoken = jObj.getString("languagespoken");
+            languagewritten = jObj.getString("languagewritten");
         }catch(JSONException e){
             Log.i("Test",e.toString());
             return;
@@ -175,7 +174,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put(KEY_LANGWRITTEN, languagewritten); //NRIC
 
         // Inserting Row
-        long id = db.update(TABLE_USER, values, KEY_UID +"="+uid, null);
+        long id = db.update(TABLE_USER, values, KEY_UID +"='"+uid + "'", null);
         db.close(); // Closing database connection
 
         Log.d(TAG, "New user inserted into sqlite: " + id);

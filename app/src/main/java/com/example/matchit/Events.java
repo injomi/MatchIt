@@ -2,6 +2,7 @@ package com.example.matchit;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -42,6 +44,7 @@ public class Events extends Fragment {
     String UID;
     ListView lv_past;
     ListView lv_current;
+    TextView cip;
 
     @Nullable
     @Override
@@ -52,6 +55,8 @@ public class Events extends Fragment {
         queryDB(UID);
         lv_past = (ListView)myView.findViewById(R.id.listViewPastEvent);
         lv_current = (ListView)myView.findViewById(R.id.listViewCurrentEvent);
+        cip = (TextView)myView.findViewById(R.id.cipHours);
+
         return myView;
     }
 
@@ -72,8 +77,9 @@ public class Events extends Fragment {
                     if (!error) {
                         JSONArray past = jRes.getJSONArray("past");
                         JSONArray current = jRes.getJSONArray("current");
-                        lv_past.setAdapter(new EventAdapter(context,past));
-                        lv_current.setAdapter(new EventAdapter(context,current));
+                        lv_past.setAdapter(new EventAdapter(context,past,"past"));
+                        lv_current.setAdapter(new EventAdapter(context,current,"upcoming"));
+                        cip.setText(String.valueOf(jRes.getInt("cip")));
 
                     } else { //error msges TODO:fill meaningful error msges
 

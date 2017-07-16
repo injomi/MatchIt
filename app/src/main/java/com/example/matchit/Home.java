@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.matchit.helper.RVAdapter;
 import com.example.matchit.model.Event;
@@ -32,6 +35,8 @@ public class Home extends Fragment {
     RecyclerView rv;
     ArrayList<Event> events;
     DatabaseReference db;
+    EditText search;
+    RVAdapter adapter;
 
     @Nullable
     @Override
@@ -49,10 +54,11 @@ public class Home extends Fragment {
         FragmentManager fragmentManager = getFragmentManager();
         db = FirebaseDatabase.getInstance().getReference();
         rv = (RecyclerView)view.findViewById(R.id.rv);
+        search = (EditText)view.findViewById(R.id.search_box);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
         events = new ArrayList<>();
-        RVAdapter adapter = new RVAdapter(events);
+        adapter = new RVAdapter(events,getActivity());
         rv.setAdapter(adapter);
 
         db.child("/events").addValueEventListener(new ValueEventListener() {
@@ -67,7 +73,9 @@ public class Home extends Fragment {
                     Event event = child.getValue(Event.class);
                     events.add(event);
                 }
-                rv.setAdapter(new RVAdapter(events));
+                adapter = new RVAdapter(events,getActivity());
+                adapter.filter(search.getText().toString());
+                rv.setAdapter(adapter);
             }
 
             @Override
@@ -77,6 +85,25 @@ public class Home extends Fragment {
         });
 
 
+        search.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                Log.i("Test","Search -> " + arg0);
+                adapter.filter(arg0.toString());
+                rv.invalidateItemDecorations();
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                                          int arg3) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+
+            }
+        });
 
 
 //        Button sub1 = (Button)view.findViewById(R.id.subTopic1);

@@ -1,8 +1,10 @@
 package com.example.matchit.helper;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.matchit.EventDetails;
+import com.example.matchit.HomeScreen;
 import com.example.matchit.R;
 import com.example.matchit.model.eventItemModel;
 
@@ -28,8 +32,10 @@ public class EventAdapter extends BaseAdapter {
     private Context context;
     private JSONArray data;
     private static LayoutInflater inflater=null;
+    public String type;
 
-    public EventAdapter(Context a, JSONArray data){
+    public EventAdapter(Context a, JSONArray data, String type){
+        this.type = type;
         context = a;
         this.data = data;
         inflater = ( LayoutInflater )context.
@@ -56,11 +62,12 @@ public class EventAdapter extends BaseAdapter {
         public TextView date;
         public TextView time;
         public TextView status;
+        public int eventID;
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
-        ViewHolder holder = new ViewHolder();
+        final ViewHolder holder = new ViewHolder();
         View rowView;
         rowView = inflater.inflate(R.layout.myevents_list,null);
         holder.date = (TextView)rowView.findViewById(R.id.myEvent_date);
@@ -74,16 +81,31 @@ public class EventAdapter extends BaseAdapter {
             holder.name.setText(obj.getString("event_name"));
             holder.status.setText(obj.getString("status"));
             holder.time.setText(obj.getString("event_startTime"));
+            holder.eventID = obj.getInt("EID");
 
         } catch (JSONException e) {
             Log.i("Test","Error -> " + e.toString());
         }
-
+        final FragmentManager fragmentManager = ((HomeScreen)context).getFragmentManager();
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO link to events details page
-                Toast.makeText(context,"You clicked " + position,Toast.LENGTH_SHORT).show();
+                Log.i("Test","EID: " + "(" + holder.eventID + ")" + " clicked");
+                Bundle bundle = new Bundle();
+                bundle.putInt(EventDetails.EVENT_ID_KEY, holder.eventID);
+                if(type.equals("past")){
+                    //..
+                }
+                else if(type.equals("upcoming")){
+                    EventDetails eventDetails = new EventDetails();
+                    eventDetails.setArguments(bundle);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content_frame
+                                    , eventDetails)
+                            .commit();
+                }
+
             }
         });
         return rowView;
