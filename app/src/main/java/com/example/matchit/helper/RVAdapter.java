@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.matchit.EventDetails;
 import com.example.matchit.HomeScreen;
@@ -134,6 +135,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {
                 @Override
                 public void run() {
                     RVAdapter.this.notifyDataSetChanged();
+                    if(events.isEmpty())
+                        Toast.makeText(activity, "No event found", Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (NullPointerException e) {

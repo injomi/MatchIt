@@ -96,6 +96,12 @@ public class EventAdapter extends BaseAdapter {
                 bundle.putInt(EventDetails.EVENT_ID_KEY, holder.eventID);
                 if(type.equals("past")){
                     //..
+                    EventDetails eventDetails = new EventDetails();
+                    eventDetails.setArguments(bundle);
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content_frame
+                                    , eventDetails)
+                            .commit();
                 }
                 else if(type.equals("upcoming")){
                     EventDetails eventDetails = new EventDetails();

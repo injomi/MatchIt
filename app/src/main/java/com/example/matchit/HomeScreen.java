@@ -14,7 +14,13 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.matchit.activity.LoginActivity;
+import com.example.matchit.app.AppConfig;
+import com.example.matchit.app.AppController;
 import com.example.matchit.app.barcode.BarcodeCaptureActivity;
 import com.example.matchit.helper.SQLiteHandler;
 import com.example.matchit.helper.SessionManager;
@@ -22,7 +28,11 @@ import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class HomeScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -169,10 +179,18 @@ public class HomeScreen extends AppCompatActivity
                             , new Availability()) //My Availability
                     .commit();
         } else if (id == R.id.nav_setting) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame
-                            , new Setting()) //Account Settings
-                    .commit();
+            if(user.get("org_name").isEmpty()){ //individual
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame
+                                , new Setting()) //Account Settings
+                        .commit();
+            }
+            else{
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame
+                                , new OrgSetting()) //Account Settings
+                        .commit();
+            }
         } else if (id == R.id.nav_logout) {
             logoutUser(); //Logout
         } else if (id == R.id.nav_attendance) {
@@ -191,11 +209,73 @@ public class HomeScreen extends AppCompatActivity
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
-                    Toast.makeText(this, barcode.displayValue, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(this, barcode.displayValue, Toast.LENGTH_LONG).show();
                     Log.i("Test",barcode.displayValue);
+                    updateAttendance(user.get("uid"),barcode.displayValue);
+
                 } else Log.i("Test",getResources().getString(R.string.no_barcode_captured));
             } else Log.e("Test", String.format(getString(R.string.barcode_error_format),
                     CommonStatusCodes.getStatusCodeString(resultCode)));
         } else super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void updateAttendance(final String uid, final String SID) {
+        // Tag used to cancel the request
+        String tag_string_req = "QR";
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                AppConfig.UPDATE_ATTENDANCE, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) { //response
+                Log.d("Test", "QR Response: " + response.toString());
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        // User successfully stored in MySQL
+                        // Now store the user in sqlite
+
+                        // Inserting row in users table
+                        db.updateUser(jObj);
+
+                        Toast.makeText(HomeScreen.this, "Your attendance have been updated", Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(HomeScreen.this.getApplicationContext(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Test", "Update Error: " + error.getMessage());
+                Toast.makeText(HomeScreen.this,
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() { //sending
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("SID",SID);
+                params.put("uid",uid);
+                return params;
+            }
+        };
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 }

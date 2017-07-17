@@ -1,7 +1,7 @@
 package com.example.matchit.app;
 
 public class AppConfig {
-    public static String HOST  =  "192.168.1.11";
+    public static String HOST  =  "192.168.0.18";
     // Server user login url
     public static String URL_LOGIN = "http://" + HOST + "/matchit/login.php";
 
@@ -14,10 +14,13 @@ public class AppConfig {
     //Update Profile
     public static String URL_UPDATE = "http://" + HOST + "/matchit/profile.php";
 
-    public static String URL_ORGINFO = "http://" + HOST + "/matchit/include/DB_Functions.php";
+    public static String URL_UPDATE2 = "http://" + HOST + "/matchit/profile2.php";
+
+    public static String URL_ORGINFO = "http://" + HOST + "/matchit/orgInfo.php";
 
     public static String URL_USEREVENTS = "http://" + HOST + "/matchit/userEvents.php";
 
     public static String URL_AVAILABILITY = "http://" + HOST + "/matchit/availability.php";
 
+    public static String UPDATE_ATTENDANCE = "http://" + HOST + "/matchit/attendance.php";
 }

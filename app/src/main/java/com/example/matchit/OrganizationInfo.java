@@ -39,7 +39,6 @@ public class OrganizationInfo extends Fragment {
     private ProgressDialog pDialog;
 
     private SQLiteHandler db;
-    public HashMap<String, String> org;
     private SessionManager session;
     View myView;
 
@@ -85,12 +84,12 @@ public class OrganizationInfo extends Fragment {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
                     if (!error) {
-                        String name = org.get("org_name");
-                        String address = org.get("org_address");
-                        String contact = org.get("org_contact");
-                        String who = org.get("org_who");
-                        String how = org.get("org_how_they");
-                        String howyou = org.get("org_how_you");
+                        String name = jObj.getString("org_name");
+                        String address = jObj.getString("org_address");
+                        String contact = jObj.getString("org_contact");
+                        String who = jObj.getString("org_who");
+                        String how = jObj.getString("org_how_they");
+                        String howyou = jObj.getString("org_how_you");
 
                         orgName.setText(name);
                         orgAddress.setText(address);

@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView"
                 android:paddingBottom="5dp"
-                android:paddingTop="300dp"
+                android:paddingTop="50dp"
                 android:text="Account Name: "
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp"
@@ -147,14 +147,6 @@
                 android:text="Update Profile"
                 />
 
-            <TextView
-                android:id="@+id/textViewSpace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:paddingTop="5dp"
-                />
-
             <View
                 android:id="@+id/view2"
                 android:layout_width="600dp"
@@ -163,6 +155,7 @@
                 android:background="@color/colorBlack"
 
                 />
+
 
             <TextView
                 android:id="@+id/textView10"
@@ -192,10 +185,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
-                android:paddingTop="20dp"
                 android:text="Enter Password:"
                 android:textColor="@color/colorBlack"
-                android:textSize="16sp" />
+                android:paddingTop="20dp"
+                android:textSize="16sp"/>
 
             <EditText
                 android:id="@+id/accountPassword"
@@ -217,7 +210,7 @@
                 android:paddingBottom="5dp"
                 android:text="Please Enter Password Again: "
                 android:textColor="@color/colorBlack"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
             <EditText
                 android:id="@+id/accountCfmPassword"
@@ -238,12 +231,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dip"
-                android:text="UPDATE PASSWORD"
-                android:textColor="#FFFFFF"
                 android:gravity="center"
                 android:shadowColor="#575757"
                 android:shadowDx="0"
-                android:shadowDy="0"/>
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:textColor="#FFFFFF"
+                android:text="Update Password"
+                />
 
         </LinearLayout>
     </ScrollView>
