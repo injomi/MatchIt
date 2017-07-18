@@ -61,6 +61,15 @@ public class Availability extends Fragment implements  View.OnClickListener {
                                         "-" + String.format("%02d",dayStart);
                         String end = yearEnd + "-" + String.format("%02d",monthEnd) +
                                 "-" + String.format("%02d",dayEnd);
+                        AvailAdapter adapter = (AvailAdapter)lv_avail.getAdapter();
+                        try {
+                            if(adapter.isDuplicate(start,end)){
+                                Toast.makeText(getActivity(), "Date range already set available", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        } catch (JSONException e) {
+                            Log.i("Test","JSON error:" + e.toString());
+                        }
                         queryAvailService("addAvailability",UID,0,start,end);
                     }
                 });

@@ -108,7 +108,7 @@ public class HomeScreen extends AppCompatActivity
         else{
             getFragmentManager().beginTransaction()
                     .replace(R.id.content_frame
-                            , new Home())
+                            , new Home(),"HOME")
                     .commit();
         }
     }
@@ -130,7 +130,16 @@ public class HomeScreen extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            Home myFragment = (Home)getFragmentManager().findFragmentByTag("HOME");
+            if (myFragment != null && myFragment.isVisible()) {
+                super.onBackPressed();
+            }
+            else{
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame
+                                , new Home(),"HOME")
+                        .commit();
+            }
         }
     }
 
@@ -171,7 +180,7 @@ public class HomeScreen extends AppCompatActivity
         } else if (id == R.id.nav_events) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new Home()) //Events
+                            , new Home(),"HOME") //Events
                     .commit();
         } else if (id == R.id.nav_availability) {
             fragmentManager.beginTransaction()

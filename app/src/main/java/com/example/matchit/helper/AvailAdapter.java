@@ -35,6 +35,17 @@ public class AvailAdapter extends BaseAdapter {
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public boolean isDuplicate(String start, String end) throws JSONException {
+        for(int i=0; i<data.length(); i++){
+            JSONObject obj = data.getJSONObject(i);
+            String s = obj.getString("start");
+            String d = obj.getString("end");
+            if(s.equals(start) && d.equals(end))
+                return true;
+        }
+        return false;
+    }
+
     @Override
     public int getCount(){
         return data.length();
