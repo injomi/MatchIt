@@ -3,6 +3,7 @@ package com.example.matchit.helper;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,6 +22,8 @@ import com.example.matchit.model.Session;
 
 import java.util.ArrayList;
 import java.util.List;
+
+;
 
 /**
  * Created by Ajimal on 6/15/2017.
@@ -135,8 +138,18 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {
                 @Override
                 public void run() {
                     RVAdapter.this.notifyDataSetChanged();
-                    if(events.isEmpty())
-                        Toast.makeText(activity, "No event found", Toast.LENGTH_SHORT).show();
+                    if(events.isEmpty()) {
+                        final Toast toast = Toast.makeText(activity, "No Event Found!", Toast.LENGTH_SHORT);
+                        toast.show();
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                toast.cancel();
+                            }
+                        }, 1000);
+                    }
                 }
             });
         } catch (NullPointerException e) {

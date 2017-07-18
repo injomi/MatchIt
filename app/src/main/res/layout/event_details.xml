@@ -156,7 +156,8 @@
                 android:layout_toEndOf="@id/textView4"
                 android:paddingBottom="20dp"
                 android:text="Text View"
-                android:textColor="@color/colorBlack" />
+                android:textColor="@color/colorBlack"
+                android:layout_marginEnd="30dp"/>
 
             //Session
 
@@ -283,15 +284,6 @@
             android:text="Register"
             android:textColor="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/txtViewBlank"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_weight="1"
-            android:padding="5dip" />
-
         <Button
             android:id="@+id/buttonCancel"
             android:layout_width="fill_parent"
@@ -307,6 +299,16 @@
             android:text="Unregister Event"
             android:textColor="#FFFFFF"
             android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/txtViewBlank"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:padding="5dip" />
+
         <!--android:textColor="@drawable/border"
         the above code is causing a crash for nougats OS-->
     </LinearLayout>

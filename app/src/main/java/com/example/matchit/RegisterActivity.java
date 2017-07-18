@@ -92,7 +92,7 @@ public class RegisterActivity extends Activity {
                 //Validate form
                 if (!inputFullName.getText().toString().isEmpty() && !inputNric.getText().toString().isEmpty() && !inputAddress.getText().toString().isEmpty() && !inputPostalCode.getText().toString().isEmpty() && !inputContact.getText().toString().isEmpty() && !inputEmail.getText().toString().isEmpty() && !inputPassword.getText().toString().isEmpty()) {
                     //Validate name
-                    String namePattern = "[a-zA-Z]+\\.?";
+                    String namePattern = "^[a-zA-Z_ ]*$?";
                     if(!inputFullName.getText().toString().matches(namePattern))
                     {
                         Toast.makeText(getApplicationContext(),
@@ -120,7 +120,7 @@ public class RegisterActivity extends Activity {
                     }
                 } else {
                     //Validate name
-                    String namePattern = "[a-zA-Z]+\\.?";
+                    String namePattern = "^[a-zA-Z_ ]*$";
                     if(!inputFullName.getText().toString().matches(namePattern))
                     {
                         Toast.makeText(getApplicationContext(),

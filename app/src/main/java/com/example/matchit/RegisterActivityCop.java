@@ -104,7 +104,7 @@ public class RegisterActivityCop extends Activity {
 
 
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !nric.isEmpty() && !org_name.isEmpty() && !uen.isEmpty() && !liason_contact.isEmpty()) {
-                    String namePattern = "[a-zA-Z]+\\.?";
+                    String namePattern = "^[a-zA-Z_ ]*$";
                     if(!name.matches(namePattern))
                     {
                         Toast.makeText(getApplicationContext(),
@@ -129,7 +129,7 @@ public class RegisterActivityCop extends Activity {
                         return;
                     }
 
-                    String orgName = "[a-zA-Z]+\\.?";
+                    String orgName = "^[a-zA-Z_ ]*$";
                     if(!name.matches(orgName))
                     {
                         Toast.makeText(getApplicationContext(),
