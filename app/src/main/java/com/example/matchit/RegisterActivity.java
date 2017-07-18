@@ -188,4 +188,11 @@ public class RegisterActivity extends Activity {
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(RegisterActivity.this, RegisterSelection.class);
+        startActivity(intent);
+        finish(); // Destroy activity A and not exist in Back stack
+    }
 }

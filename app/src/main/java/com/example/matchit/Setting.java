@@ -191,6 +191,7 @@ public class Setting extends Fragment {
                 updateUser("password", user.get("uid"), "", "", "", "", "", "", newPW, oldPW);
             }
         });
+
         return myView;
     }
 
@@ -284,6 +285,5 @@ public class Setting extends Fragment {
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
-
 
 }

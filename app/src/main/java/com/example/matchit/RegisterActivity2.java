@@ -338,4 +338,7 @@ public class RegisterActivity2 extends Activity {
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
+    @Override
+    public void onBackPressed() {
+    }
 }
