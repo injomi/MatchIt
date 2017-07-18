@@ -85,7 +85,7 @@
                 android:layout_below="@+id/textView3"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/lv_bg"
+                android:background="#d0e4ed"
                 android:textColor="@color/colorBlack" />
 
             <TextView
@@ -109,7 +109,7 @@
                 android:layout_below="@+id/textView4"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/lv_bg"
+                android:background="#d0e4ed"
                 android:textColor="@color/colorBlack" />
         </RelativeLayout>
     </ScrollView>
