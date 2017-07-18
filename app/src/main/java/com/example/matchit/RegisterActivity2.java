@@ -187,52 +187,63 @@ public class RegisterActivity2 extends Activity {
 
     public void onCheckboxClicked(View view) {
 
-        boolean checked = ((CheckBox) view).isChecked();
-
-        switch(view.getId()) {
-            case R.id.checkBoxEnglish:
-                list.add(englishSpoken.getTag().toString());
-
-
-                break;
-            case R.id.checkBoxEnglishWritten:
-                list2.add(englishWritten.getTag().toString());
-
-                break;
-
-            case R.id.checkBoxMandarin:
-                list.add(mandarinSpoken.getTag().toString());
-
-                break;
-            case R.id.checkBoxMandarinWritten:
-                list2.add(mandarinWritten.getTag().toString());
-
-                break;
-            case R.id.checkBoxMalay:
-                list.add(malaySpoken.getTag().toString());
-
-                break;
-            case R.id.checkBoxMalayWritten:
-                list2.add(malayWritten.getTag().toString());
-
-                break;
-            case R.id.checkBoxTamil:
-                list.add(tamilSpoken.getTag().toString());
-
-                break;
-            case R.id.checkBoxTamilWritten:
-                list2.add(tamilWritten.getTag().toString());
-
-                break;
-            case R.id.checkBoxOthers:
-                list.add(othersSpoken.getTag().toString());
-
-                break;
-            case R.id.checkBoxOthersWritten:
-                list2.add(othersWritten.getTag().toString());
-
-                break;
+        CheckBox checkbox = (CheckBox) view;
+        String identifier = getResources().getResourceEntryName(view.getId());
+        String tag = checkbox.getTag().toString();
+        if(identifier.contains("Written")) {
+            if(checkbox.isChecked())
+                list2.add(tag);
+            else
+                list2.remove(tag);
         }
+        else {
+            if(checkbox.isChecked())
+                list.add(tag);
+            else
+                list.remove(tag);
+        }
+
+//        switch(view.getId()) {
+//            case R.id.checkBoxEnglish:
+//                list.add(englishSpoken.getTag().toString());
+//                break;
+//            case R.id.checkBoxEnglishWritten:
+//                list2.add(englishWritten.getTag().toString());
+//                break;
+//
+//            case R.id.checkBoxMandarin:
+//                list.add(mandarinSpoken.getTag().toString());
+//                break;
+//            case R.id.checkBoxMandarinWritten:
+//                list2.add(mandarinWritten.getTag().toString());
+//
+//                break;
+//            case R.id.checkBoxMalay:
+//                list.add(malaySpoken.getTag().toString());
+//
+//                break;
+//            case R.id.checkBoxMalayWritten:
+//                list2.add(malayWritten.getTag().toString());
+//
+//                break;
+//            case R.id.checkBoxTamil:
+//                list.add(tamilSpoken.getTag().toString());
+//
+//                break;
+//            case R.id.checkBoxTamilWritten:
+//                list2.add(tamilWritten.getTag().toString());
+//
+//                break;
+//            case R.id.checkBoxOthers:
+//                list.add(othersSpoken.getTag().toString());
+//
+//                break;
+//            case R.id.checkBoxOthersWritten:
+//                list2.add(othersWritten.getTag().toString());
+//
+//                break;
+//        }
+
     }
 
     /**
@@ -243,7 +254,6 @@ public class RegisterActivity2 extends Activity {
                               final String password, final String nric, final String org_name, final String uen, final String liason_contact, final String address, final String postalcode, final String gender, final String contactnumber, final String nationality, final String race, final String specialization, final String occupation, final String languagespoken, final String languagewritten) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
-
         pDialog.setMessage("Registering ...");
         showDialog();
 
