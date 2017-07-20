@@ -113,7 +113,7 @@ public class RegisterActivityCop extends Activity {
                         return;
                     }
 
-                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}"))
+                    if (!nric.matches("\\p{Upper}|\\p{Lower}\\d{7}\\p{Upper}|\\p{Lower}"))
                     {
                         Toast.makeText(getApplicationContext(),
                                 "NRIC not in the right format", Toast.LENGTH_LONG)

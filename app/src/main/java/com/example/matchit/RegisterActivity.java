@@ -52,6 +52,7 @@ public class RegisterActivity extends Activity {
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
 
+
         //Buttons
         btnNextPage = (Button) findViewById(R.id.btnNextPage);
         btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
@@ -103,7 +104,7 @@ public class RegisterActivity extends Activity {
 
                     //Validate nric
                     String nric = inputNric.getText().toString().trim();
-                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}")) {
+                    if (!nric.matches("\\p{Upper}|\\p{Lower}\\d{7}\\p{Upper}|\\p{Lower}")) {
                         Toast.makeText(getApplicationContext(),
                                 "NRIC not in the right format", Toast.LENGTH_LONG)
                                 .show();
@@ -130,7 +131,7 @@ public class RegisterActivity extends Activity {
                     }
                     //Validate nric
                     String nric = inputNric.getText().toString().trim();
-                    if (!nric.matches("\\p{Upper}\\d{7}\\p{Upper}")) {
+                    if (!nric.matches("\\p{Upper}|\\p{Lower}\\d{7}\\p{Upper}|\\p{Lower}")) {
                         Toast.makeText(getApplicationContext(),
                                 "NRIC not in the right format", Toast.LENGTH_LONG)
                                 .show();
