@@ -104,7 +104,7 @@ public class RegisterActivity extends Activity {
 
                     //Validate nric
                     String nric = inputNric.getText().toString().trim();
-                    if (!nric.matches("\\p{Upper}|\\p{Lower}\\d{7}\\p{Upper}|\\p{Lower}")) {
+                    if (!nric.matches("[A-Za-z]\\d{7}[A-Za-z]")) {
                         Toast.makeText(getApplicationContext(),
                                 "NRIC not in the right format", Toast.LENGTH_LONG)
                                 .show();
@@ -131,7 +131,7 @@ public class RegisterActivity extends Activity {
                     }
                     //Validate nric
                     String nric = inputNric.getText().toString().trim();
-                    if (!nric.matches("\\p{Upper}|\\p{Lower}\\d{7}\\p{Upper}|\\p{Lower}")) {
+                    if (!nric.matches("[A-Za-z]\\d{7}[A-Za-z]")) {
                         Toast.makeText(getApplicationContext(),
                                 "NRIC not in the right format", Toast.LENGTH_LONG)
                                 .show();
