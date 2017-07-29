@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.matchit.EventDetails;
+import com.example.matchit.Feedback;
 import com.example.matchit.HomeScreen;
 import com.example.matchit.R;
 import com.example.matchit.model.eventItemModel;
@@ -96,11 +97,11 @@ public class EventAdapter extends BaseAdapter {
                 bundle.putInt(EventDetails.EVENT_ID_KEY, holder.eventID);
                 if(type.equals("past")){
                     //..
-                    EventDetails eventDetails = new EventDetails();
-                    eventDetails.setArguments(bundle);
+                    Feedback feedback = new Feedback();
+                    feedback.setArguments(bundle);
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame
-                                    , eventDetails)
+                                    , feedback)
                             .commit();
                 }
                 else if(type.equals("upcoming")){

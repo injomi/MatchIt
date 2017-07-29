@@ -112,7 +112,7 @@ public class OrgSetting extends Fragment {
 //                String languagewritten = txt2.getText().toString();
 //                String spoken = TextUtils.join(",",list); //JOEL IS A NOOB
 //                String written = TextUtils.join(",",list2); // OMG JOEL IS REALLY A NOOB
-                updateUser("profile",uid, newname, newcontact,newuen,newnorg,"","");
+                updateUser("profile",uid, newname, newcontact,newnorg,newuen,"","");
 
             }
         });
@@ -144,7 +144,7 @@ public class OrgSetting extends Fragment {
 
             @Override
             public void onResponse(String response) { //response
-                Log.d(TAG, "Register Response: " + response.toString());
+                Log.d("Test", "Register Response: " + response.toString());
                 hideDialog();
 
                 try {
@@ -155,7 +155,7 @@ public class OrgSetting extends Fragment {
                         // Now store the user in sqlite
 
                         // Inserting row in users table
-                        db.updateUser(jObj);
+                        db.updateOrg(jObj);
 
                         Toast.makeText(getActivity().getApplicationContext(), "Update Successful!", Toast.LENGTH_LONG).show();
 
@@ -195,6 +195,7 @@ public class OrgSetting extends Fragment {
                     params.put("contactnumber", contactnumber);
                     params.put("uen", uen);
                     params.put("newOrg", neworg);
+                    Log.i("Test",String.format("uid:%s,name:%s,contact:%s,uen:%s,newOrg:%s",uid,name,contactnumber,uen,neworg));
                 }
                 else if(queryType.equals("password")){
                     params.put("uid",uid);

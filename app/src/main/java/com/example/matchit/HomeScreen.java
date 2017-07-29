@@ -247,7 +247,7 @@ public class HomeScreen extends AppCompatActivity
                         // Now store the user in sqlite
 
                         // Inserting row in users table
-                        db.updateUser(jObj);
+//                        db.updateUser(jObj);
 
                         Toast.makeText(HomeScreen.this, "Your attendance have been updated", Toast.LENGTH_LONG).show();
 

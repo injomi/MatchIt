@@ -13,8 +13,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.matchit.app.AppConfig;
+import com.example.matchit.app.AppController;
 import com.example.matchit.helper.RVAdapter;
 import com.example.matchit.model.Event;
 import com.google.firebase.database.DataSnapshot;
@@ -23,118 +32,136 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class Feedback extends Fragment {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Feedback extends Fragment implements  View.OnClickListener{
 
     View myView;
-    RecyclerView rv;
-    ArrayList<Event> events;
     DatabaseReference db;
-    EditText search;
-    RVAdapter adapter;
+    ImageView sad;
+    ImageView neutral;
+    ImageView happy;
+    Button submit;
+    int rating = 0;
+    int EID;
+    EditText comment;
+    String UID;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.feedback_form, container, false);
 
+        sad = (ImageView)myView.findViewById(R.id.imageButton3);
+        sad.setOnClickListener(this);
+        neutral = (ImageView)myView.findViewById(R.id.imageButton2);
+        neutral.setOnClickListener(this);
+        happy = (ImageView)myView.findViewById(R.id.imageButton4);
+        happy.setOnClickListener(this);
+        submit = (Button)myView.findViewById(R.id.buttonSubmit);
+        submit.setOnClickListener(this);
+        comment = (EditText) myView.findViewById(R.id.textView9);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            EID = bundle.getInt(EventDetails.EVENT_ID_KEY, 0);
+            UID = ((HomeScreen)this.getActivity()).user.get("uid");
+            Log.i("Test","fragment argument of eventID -> " + EID + ", UID -> " + UID + "//");
+        }
+
         //return super.onCreateView(inflater, container, savedInstanceState);
         return myView;
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        db = FirebaseDatabase.getInstance().getReference();
-        rv = (RecyclerView)view.findViewById(R.id.rv);
-        search = (EditText)view.findViewById(R.id.search_box);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        rv.setLayoutManager(llm);
-        events = new ArrayList<>();
-        adapter = new RVAdapter(events,getActivity());
-        rv.setAdapter(adapter);
-
-        db.child("/events").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                events = new ArrayList<Event>();
-
-                for(DataSnapshot child : dataSnapshot.getChildren()){
-                    Log.i("Test","Key -> " + child.getKey());
-                    Event event = child.getValue(Event.class);
-                    events.add(event);
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.imageButton3: //sad
+                sad.setAlpha(1f);
+                happy.setAlpha(.4f);
+                neutral.setAlpha(.4f);
+                rating = 1;
+                break;
+            case R.id.imageButton2: //neutral
+                neutral.setAlpha(1f);
+                happy.setAlpha(.4f);
+                sad.setAlpha(.4f);
+                rating = 2;
+                break;
+            case R.id.imageButton4: //happy
+                happy.setAlpha(1f);
+                sad.setAlpha(.4f);
+                neutral.setAlpha(.4f);
+                rating = 3;
+                break;
+            case R.id.buttonSubmit:
+                if(rating == 0){
+                    Toast.makeText(getActivity(), "Please select your feedback", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                adapter = new RVAdapter(events,getActivity());
-                adapter.filter(search.getText().toString());
-                rv.setAdapter(adapter);
-            }
+                updateFeedback();
+
+                break;
+        }
+    }
+
+    private void updateFeedback() {
+        // Tag used to cancel the request
+        String tag_string_req = "feedback";
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                AppConfig.UPDATE_FEEDBACK, new Response.Listener<String>() {
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.i("Test", "Error: 0xA2");
+            public void onResponse(String response) { //response
+                Log.d("Test", "Feedback Response: " + response.toString());
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        Toast.makeText(getActivity(), "Thank you for your feedback!", Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getActivity(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
-        });
-
-
-        search.addTextChangedListener(new TextWatcher() {
+        }, new Response.ErrorListener() {
 
             @Override
-            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                Log.i("Test","Search -> " + arg0);
-                adapter.filter(arg0.toString());
-                rv.invalidateItemDecorations();
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Test", "Update Error: " + error.getMessage());
+                Toast.makeText(getActivity(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
             }
+        }) {
 
             @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                                          int arg3) {
+            protected Map<String, String> getParams() { //sending
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("EID",String.valueOf(EID));
+                params.put("uid",UID);
+                params.put("feedback",comment.getText().toString());
+                params.put("rating",String.valueOf(rating));
+                return params;
             }
+        };
 
-            @Override
-            public void afterTextChanged(Editable arg0) {
-
-            }
-        });
-
-
-//        Button sub1 = (Button)view.findViewById(R.id.subTopic1);
-//        sub1.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                FirebaseMessaging.getInstance().subscribeToTopic("one");
-//            }
-//        });
-//
-//        Button sub2 = (Button)view.findViewById(R.id.unsubTopic1);
-//        sub2.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                FirebaseMessaging.getInstance().unsubscribeFromTopic("one");
-//            }
-//        });
-//
-//        Button sub3 = (Button)view.findViewById(R.id.subTopic2);
-//        sub3.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                FirebaseMessaging.getInstance().subscribeToTopic("two");
-//            }
-//        });
-//
-//        Button sub4 = (Button)view.findViewById(R.id.unsubTopic2);
-//        sub4.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                FirebaseMessaging.getInstance().unsubscribeFromTopic("two");
-//            }
-//        });
-
-//        if (getActivity().getIntent().getExtras() != null) {
-//            for (String key : getActivity().getIntent().getExtras().keySet()) {
-//                String value = getActivity().getIntent().getExtras().getString(key);
-//                Log.d("Test", "Key2: " + key + " Value2: " + value);
-//            }
-//        }
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 }

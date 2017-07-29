@@ -168,6 +168,7 @@ public class Setting extends Fragment {
                     if (spokenChks[i].isChecked())
                         spoken += spokenChks[i].getTag().toString() + ",";
                 }
+                Log.i("Test","Spoken->"+spoken+",written->"+written);
                 if (!newname.isEmpty() && !newcontact.isEmpty() && !newaddress.isEmpty() && !newpostalcode.isEmpty() && !spoken.isEmpty() && !written.isEmpty()) {
                     updateUser("profile", uid, newname, newaddress, newpostalcode, newcontact,
                             spoken.substring(0, spoken.length() - 1), written.substring(0, written.length() - 1), "", "");

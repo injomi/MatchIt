@@ -57,10 +57,11 @@ public class Availability extends Fragment implements  View.OnClickListener {
                                                int yearStart, int monthStart,
                                                int dayStart, int yearEnd,
                                                int monthEnd, int dayEnd) {
-                        String start = yearStart + "-" + String.format("%02d",monthStart) +
+                        String start = yearStart + "-" + String.format("%02d",monthStart+1) +
                                         "-" + String.format("%02d",dayStart);
-                        String end = yearEnd + "-" + String.format("%02d",monthEnd) +
+                        String end = yearEnd + "-" + String.format("%02d",monthEnd+1) +
                                 "-" + String.format("%02d",dayEnd);
+                        Log.i("Test","start->"+start+", end->"+end);
                         AvailAdapter adapter = (AvailAdapter)lv_avail.getAdapter();
                         try {
                             if(adapter.isDuplicate(start,end)){

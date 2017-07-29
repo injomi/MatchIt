@@ -146,6 +146,33 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         Log.d(TAG, "New user inserted into sqlite: " + id);
     }
 
+    public void updateOrg(JSONObject jObj) {
+        String uid,name,org,contact,uen;
+        try {
+            uid = jObj.getString("unique_id");
+            name = jObj.getString("name");
+            org = jObj.getString("org_name");
+            contact = jObj.getString("liason_contact");
+            uen = jObj.getString("uen");
+
+        }catch(JSONException e){
+            Log.i("Test",e.toString());
+            return;
+        }
+        SQLiteDatabase db = this.getWritableDatabase();
+//        Log.i("Test", "Add name: " + name + ", Add email: " + email);
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, name); // Name
+        values.put(KEY_ORG_NAME,org);
+        values.put(KEY_CONTACT,contact);
+        values.put(KEY_UEN,uen);
+        // Inserting Row
+        long id = db.update(TABLE_USER, values, KEY_UID +"='"+uid + "'", null);
+        db.close(); // Closing database connection
+
+        Log.d(TAG, "New user inserted into sqlite: " + id);
+    }
+
     public void updateUser(JSONObject jObj) {
         String uid,name,email,address,postalcode,contactnumber,languagespoken,languagewritten;
         try {
