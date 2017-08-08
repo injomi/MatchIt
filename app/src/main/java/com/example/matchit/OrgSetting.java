@@ -30,10 +30,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by josephtyx on 4/6/17.
- */
-
 public class OrgSetting extends Fragment {
     private static final String TAG = Setting.class.getSimpleName();
 
@@ -101,17 +97,6 @@ public class OrgSetting extends Fragment {
                 String newcontact = inputContact.getText().toString().trim();
                 String newuen = inputOrgUEN.getText().toString().trim();
                 String uid = user.get("uid");
-
-//                for (String str : list) {
-//                    txt.setText(txt.getText().toString() + " , " + str);
-//                }
-//                for (String str : list2) {
-//                    txt2.setText(txt2.getText().toString() + " , " + str);
-//                }
-//                String languagespoken = txt.getText().toString();
-//                String languagewritten = txt2.getText().toString();
-//                String spoken = TextUtils.join(",",list); //JOEL IS A NOOB
-//                String written = TextUtils.join(",",list2); // OMG JOEL IS REALLY A NOOB
                 updateUser("profile",uid, newname, newcontact,newnorg,newuen,"","");
 
             }

@@ -1,7 +1,7 @@
 package com.example.matchit.model;
 
 /**
- * Created by Ajimal on 6/11/2017.
+ * used for firebase JSON conversion
  */
 
 public class Session {

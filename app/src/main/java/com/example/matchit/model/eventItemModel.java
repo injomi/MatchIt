@@ -1,7 +1,7 @@
 package com.example.matchit.model;
 
 /**
- * Created by Ajimal on 7/2/2017.
+ * Used for the my events adapter.
  */
 
 public class eventItemModel {

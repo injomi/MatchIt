@@ -25,10 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-/**
- * Created by josephtyx on 4/6/17.
- */
-
 public class Home extends Fragment {
 
     View myView;
@@ -61,6 +57,7 @@ public class Home extends Fragment {
         adapter = new RVAdapter(events,getActivity());
         rv.setAdapter(adapter);
 
+        //retreive firebase records
         db.child("/events").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -105,40 +102,5 @@ public class Home extends Fragment {
             }
         });
 
-
-//        Button sub1 = (Button)view.findViewById(R.id.subTopic1);
-//        sub1.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                FirebaseMessaging.getInstance().subscribeToTopic("one");
-//            }
-//        });
-//
-//        Button sub2 = (Button)view.findViewById(R.id.unsubTopic1);
-//        sub2.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                FirebaseMessaging.getInstance().unsubscribeFromTopic("one");
-//            }
-//        });
-//
-//        Button sub3 = (Button)view.findViewById(R.id.subTopic2);
-//        sub3.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                FirebaseMessaging.getInstance().subscribeToTopic("two");
-//            }
-//        });
-//
-//        Button sub4 = (Button)view.findViewById(R.id.unsubTopic2);
-//        sub4.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                FirebaseMessaging.getInstance().unsubscribeFromTopic("two");
-//            }
-//        });
-
-//        if (getActivity().getIntent().getExtras() != null) {
-//            for (String key : getActivity().getIntent().getExtras().keySet()) {
-//                String value = getActivity().getIntent().getExtras().getString(key);
-//                Log.d("Test", "Key2: " + key + " Value2: " + value);
-//            }
-//        }
     }
 }

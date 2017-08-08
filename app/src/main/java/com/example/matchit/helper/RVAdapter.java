@@ -26,7 +26,7 @@ import java.util.List;
 ;
 
 /**
- * Created by Ajimal on 6/15/2017.
+ * Adapter for ALL EVENTS (Events page) recycle view
  */
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EventViewHolder> {

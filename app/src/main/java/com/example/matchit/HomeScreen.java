@@ -51,17 +51,6 @@ public class HomeScreen extends AppCompatActivity
         setContentView(R.layout.activity_home_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //FirebaseMessaging.getInstance().subscribeToTopic("test");
-
-        //This is the message button at the bottom right corner
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -124,6 +113,7 @@ public class HomeScreen extends AppCompatActivity
         finish();
     }
 
+    //fix exiting of application when back press
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -212,6 +202,7 @@ public class HomeScreen extends AppCompatActivity
         return true;
     }
 
+    //Used for QR scanning. When data is received the function is invoked
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
@@ -228,6 +219,7 @@ public class HomeScreen extends AppCompatActivity
         } else super.onActivityResult(requestCode, resultCode, data);
     }
 
+    ////send Post request to web service and process results for attendance
     private void updateAttendance(final String uid, final String SID) {
         // Tag used to cancel the request
         String tag_string_req = "QR";

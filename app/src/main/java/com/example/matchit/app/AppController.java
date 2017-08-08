@@ -1,7 +1,7 @@
 package com.example.matchit.app;
 
 /**
- * Created by Joel on 04-Jun-17.
+ * This class is used to manage POST request
  */
 
 import android.app.Application;

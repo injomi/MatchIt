@@ -78,6 +78,7 @@ public class Feedback extends Fragment implements  View.OnClickListener{
         return myView;
     }
 
+    //logic to set alpha of only the tapped emoji
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.imageButton3: //sad
@@ -109,6 +110,7 @@ public class Feedback extends Fragment implements  View.OnClickListener{
         }
     }
 
+    //send Post request to web service and process results
     private void updateFeedback() {
         // Tag used to cancel the request
         String tag_string_req = "feedback";

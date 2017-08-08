@@ -1,7 +1,7 @@
 package com.example.matchit;
 
 /**
- * Created by Joel on 03-Jun-17.
+ * This activity is used to display the splash screen at the start.
  */
 
 import android.content.Intent;

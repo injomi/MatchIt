@@ -31,10 +31,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by josephtyx on 4/6/17.
- */
-
 public class Attendance extends Fragment {
 
     View myView;

@@ -8,10 +8,6 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Ajimal on 6/11/2017.
- */
-
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "FCM Service";
     @Override

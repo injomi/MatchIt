@@ -44,10 +44,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Joel on 13/6/17.
- */
-
 public class EventDetails extends Fragment implements  View.OnClickListener {
 
     public static final String EVENT_ID_KEY = "eventID";
@@ -88,7 +84,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
             pax.setText("1");
         }
         progressBar = (ProgressBar)myView.findViewById(R.id.progressBarCapacity);
-        sp_sessions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        sp_sessions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { //changes session content according to the spinner
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
@@ -121,14 +117,14 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         //return super.onCreateView(inflater, container, savedInstanceState);
 
         Bundle bundle = this.getArguments();
-        if (bundle != null) {
+        if (bundle != null) { //when calling from events fragement
             eventID = bundle.getInt(EVENT_ID_KEY, 0);
             Log.i("Test","fragment argument of eventID -> " + eventID);
             UID = ((HomeScreen)this.getActivity()).user.get("uid");
             Log.i("Test","fragment argument of eventID -> " + eventID + ", UID -> " + UID + "//");
             queryEventService("getDetails",eventID,UID,0);
         }
-        else if (getActivity().getIntent().getExtras() != null) {
+        else if (getActivity().getIntent().getExtras() != null) { //when calling from notifications
             Intent intent = getActivity().getIntent();
             String EID = intent.getStringExtra("EID");
             UID = ((HomeScreen)this.getActivity()).user.get("uid");
@@ -141,8 +137,8 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        //do what you want to do when button is clicked
-        switch (v.getId()) {
+
+        switch (v.getId()) { //when org button clicked
             case R.id.viewOrganizationInfo:
                 FragmentManager fragmentManager = ((HomeScreen)v.getContext()).getFragmentManager();
                 OrganizationInfo organizationInfo = new OrganizationInfo();
@@ -152,8 +148,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
                                 , organizationInfo)
                         .commit();
                 break;
-            case R.id.buttonReg:
-                //queryEventService("register",eventID);
+            case R.id.buttonReg: //when reg button clicked
                 try {
                     Log.i("Test","Register");
                     int sessionID = jObj.getJSONArray("sessions").getJSONObject(
@@ -170,6 +165,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         }
     }
 
+    //Process a register event response
     private void registeredHandler(final JSONObject jRes, final int sessionID) throws JSONException {
         db.child("/events/" + eventID + "/sessions/" +sessionID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -196,6 +192,7 @@ public class EventDetails extends Fragment implements  View.OnClickListener {
         swapButtons(jRes.getString("status"));
     }
 
+    //send Post request to web service and process results
     private void queryEventService(final String queryType, final int eventID, final String uid, final int sessionID){
         final Context context = this.getActivity();
         if(queryType.equals("register") && !((HomeScreen)this.getActivity()).user.get("uid").isEmpty() && pax.getText().toString().isEmpty()){

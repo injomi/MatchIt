@@ -1,6 +1,4 @@
-/**
- * Created by Joel on 04-Jun-17.
- */
+
 package com.example.matchit;
 
 import android.app.Activity;
@@ -122,16 +120,8 @@ public class RegisterActivity2 extends Activity {
                 String uen = "";
                 String liason_contact = "";
 
-//                for (String str : list) {
-//                    txt.setText(txt.getText().toString() + " , " + str);
-//                }
-//                for (String str : list2) {
-//                    txt2.setText(txt2.getText().toString() + " , " + str);
-//                }
-//                String languagespoken = txt.getText().toString();
-//                String languagewritten = txt2.getText().toString();
-                String spoken = TextUtils.join(",",list); //JOEL IS A NOOB
-                String written = TextUtils.join(",",list2); // OMG JOEL IS REALLY A NOOB
+                String spoken = TextUtils.join(",",list);
+                String written = TextUtils.join(",",list2);
 
                 if (!nationality.isEmpty() && !race.isEmpty() && !specialization.isEmpty() && !occupation.isEmpty() && !spoken.isEmpty() && !written.isEmpty()) {
                     String nationalityPattern = "[a-zA-Z]+\\.?";

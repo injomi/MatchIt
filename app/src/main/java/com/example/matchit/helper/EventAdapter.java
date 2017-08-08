@@ -25,7 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by Ajimal on 7/2/2017.
+ * Adapter for my events list view
  */
 
 public class EventAdapter extends BaseAdapter {

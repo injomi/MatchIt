@@ -16,9 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Ajimal on 7/2/2017.
- */
+//Adapter for availability listview
 
 public class AvailAdapter extends BaseAdapter {
 

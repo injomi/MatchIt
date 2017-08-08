@@ -1,10 +1,5 @@
 package com.example.matchit.helper;
 
-/**
- * Created by Joel on 04-Jun-17.
- */
-
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

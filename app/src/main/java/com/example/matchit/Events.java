@@ -33,10 +33,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by josephtyx on 4/6/17.
- */
-
 public class Events extends Fragment {
 
     View myView;
@@ -60,6 +56,7 @@ public class Events extends Fragment {
         return myView;
     }
 
+    //send Post request to web service and process results
     private void queryDB(final String uid){
         final Context context = this.getActivity();
 

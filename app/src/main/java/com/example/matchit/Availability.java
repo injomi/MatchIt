@@ -48,8 +48,7 @@ public class Availability extends Fragment implements  View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        //Log.i("Test","HIT");
+    public void onClick(View v) { //opens the date picker
         SmoothDateRangePickerFragment smoothDateRangePickerFragment = SmoothDateRangePickerFragment.newInstance(
                 new SmoothDateRangePickerFragment.OnDateRangeSetListener() {
                     @Override
@@ -77,6 +76,7 @@ public class Availability extends Fragment implements  View.OnClickListener {
         smoothDateRangePickerFragment.show(getFragmentManager(), "smoothDateRangePicker");
     }
 
+    //send Post request to web service
     public void queryAvailService(final String queryType, final String uid, final int AVID, final String startDate, final String endDate){
         final Context context = this.getActivity();
 

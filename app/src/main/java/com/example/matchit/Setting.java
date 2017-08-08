@@ -28,9 +28,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by josephtyx on 4/6/17.
- */
 
 public class Setting extends Fragment {
     private static final String TAG = Setting.class.getSimpleName();

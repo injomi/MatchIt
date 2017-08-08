@@ -1,6 +1,4 @@
-/**
- * Created by Joel on 04-Jun-17.
- */
+
 package com.example.matchit;
 
 import android.app.Activity;

@@ -1,9 +1,5 @@
 package com.example.matchit.activity;
 
-/**
- * Created by Joel on 04-Jun-17.
- */
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by Ajimal on 6/11/2017.
+ * Used for firebase JSON conversion
  */
 
 public class Event {
